@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { Nav } from "../components/site/Nav";
 import { Footer } from "../components/site/Footer";
-import { getShow, SHOWS } from "../lib/shows";
+import { getShow, SHOWS, type Show } from "../lib/shows";
 
 const WHATSAPP =
   "https://api.whatsapp.com/send/?phone=5511983167188&text=Ol%C3%A1+%2ACia+Alvo%2A%21";
@@ -50,7 +50,7 @@ export const Route = createFileRoute("/espetaculos/$slug")({
 });
 
 function ShowPage() {
-  const { show } = Route.useLoaderData();
+  const { show } = Route.useLoaderData() as { show: Show };
   const others = SHOWS.filter((s) => s.slug !== show.slug).slice(0, 3);
 
   return (

@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as EspetaculosRouteImport } from './routes/espetaculos'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as EspetaculosSlugRouteImport } from './routes/espetaculos.$slug'
 
 const EspetaculosRoute = EspetaculosRouteImport.update({
   id: '/espetaculos',
@@ -22,31 +23,39 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EspetaculosSlugRoute = EspetaculosSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => EspetaculosRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/espetaculos': typeof EspetaculosRoute
+  '/espetaculos': typeof EspetaculosRouteWithChildren
+  '/espetaculos/$slug': typeof EspetaculosSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/espetaculos': typeof EspetaculosRoute
+  '/espetaculos': typeof EspetaculosRouteWithChildren
+  '/espetaculos/$slug': typeof EspetaculosSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/espetaculos': typeof EspetaculosRoute
+  '/espetaculos': typeof EspetaculosRouteWithChildren
+  '/espetaculos/$slug': typeof EspetaculosSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/espetaculos'
+  fullPaths: '/' | '/espetaculos' | '/espetaculos/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/espetaculos'
-  id: '__root__' | '/' | '/espetaculos'
+  to: '/' | '/espetaculos' | '/espetaculos/$slug'
+  id: '__root__' | '/' | '/espetaculos' | '/espetaculos/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  EspetaculosRoute: typeof EspetaculosRoute
+  EspetaculosRoute: typeof EspetaculosRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +74,31 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/espetaculos/$slug': {
+      id: '/espetaculos/$slug'
+      path: '/$slug'
+      fullPath: '/espetaculos/$slug'
+      preLoaderRoute: typeof EspetaculosSlugRouteImport
+      parentRoute: typeof EspetaculosRoute
+    }
   }
 }
 
+interface EspetaculosRouteChildren {
+  EspetaculosSlugRoute: typeof EspetaculosSlugRoute
+}
+
+const EspetaculosRouteChildren: EspetaculosRouteChildren = {
+  EspetaculosSlugRoute: EspetaculosSlugRoute,
+}
+
+const EspetaculosRouteWithChildren = EspetaculosRoute._addFileChildren(
+  EspetaculosRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  EspetaculosRoute: EspetaculosRoute,
+  EspetaculosRoute: EspetaculosRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
