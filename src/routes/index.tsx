@@ -9,8 +9,6 @@ export const Route = createFileRoute("/")({
 
 const HERO_IMG =
   "https://ciaalvo.com.br/wp-content/uploads/2022/09/DIV-1-scaled.jpg";
-const SHOW_IMG =
-  "https://ciaalvo.com.br/wp-content/uploads/2022/09/header-1024x678.jpg";
 const FABIANO_IMG =
   "https://ciaalvo.com.br/wp-content/uploads/2022/09/foto-fabiano.jpg";
 const WHATSAPP =
