@@ -9,8 +9,14 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as EspetaculosRouteImport } from './routes/espetaculos'
 import { Route as IndexRouteImport } from './routes/index'
 
+const EspetaculosRoute = EspetaculosRouteImport.update({
+  id: '/espetaculos',
+  path: '/espetaculos',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +25,39 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/espetaculos': typeof EspetaculosRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/espetaculos': typeof EspetaculosRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/espetaculos': typeof EspetaculosRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/espetaculos'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/espetaculos'
+  id: '__root__' | '/' | '/espetaculos'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  EspetaculosRoute: typeof EspetaculosRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/espetaculos': {
+      id: '/espetaculos'
+      path: '/espetaculos'
+      fullPath: '/espetaculos'
+      preLoaderRoute: typeof EspetaculosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,6 +70,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  EspetaculosRoute: EspetaculosRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
