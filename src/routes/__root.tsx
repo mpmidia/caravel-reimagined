@@ -84,14 +84,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Cia Alvo é um grupo teatral que mistura teatro, música, dança e audiovisual para criar experiências acessíveis, emocionantes e cheias de fé.",
       },
       { name: "author", content: "Cia Alvo" },
-      { property: "og:title", content: "Cia Alvo — Teatro que toca" },
+      { property: "og:title", content: "Cia Alvo — Teatro que toca. Arte que constrói." },
       {
         property: "og:description",
         content:
-          "A Bíblia reencontrada pela arte. Espetáculos, oficinas e experiências da Cia Alvo.",
+          "Cia Alvo é um grupo teatral que mistura teatro, música, dança e audiovisual para criar experiências acessíveis, emocionantes e cheias de fé.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Cia Alvo — Teatro que toca. Arte que constrói." },
+      { name: "twitter:description", content: "Cia Alvo é um grupo teatral que mistura teatro, música, dança e audiovisual para criar experiências acessíveis, emocionantes e cheias de fé." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/08f25643-908c-45c2-88aa-b8e6cacb6bbe/id-preview-7566f5bf--fa6f3168-2fe5-4800-b3d8-bcf6c098defc.lovable.app-1783553311554.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/08f25643-908c-45c2-88aa-b8e6cacb6bbe/id-preview-7566f5bf--fa6f3168-2fe5-4800-b3d8-bcf6c098defc.lovable.app-1783553311554.png" },
     ],
     links: [
       {
