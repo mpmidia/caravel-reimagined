@@ -1,4 +1,7 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { Nav } from "../components/site/Nav";
+import { Footer } from "../components/site/Footer";
+import { SHOWS } from "../lib/shows";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -10,37 +13,8 @@ const SHOW_IMG =
   "https://ciaalvo.com.br/wp-content/uploads/2022/09/header-1024x678.jpg";
 const FABIANO_IMG =
   "https://ciaalvo.com.br/wp-content/uploads/2022/09/foto-fabiano.jpg";
-const LOGO_IMG =
-  "https://ciaalvo.com.br/wp-content/uploads/2023/07/ALVO_LOGO_TRANS_1024-1024x1024.png";
 const WHATSAPP =
   "https://api.whatsapp.com/send/?phone=5511983167188&text=Ol%C3%A1+%2ACia+Alvo%2A%21";
-
-function Nav() {
-  return (
-    <header className="sticky top-0 z-40 backdrop-blur-md bg-cream/70 border-b border-border/60">
-      <div className="container-x flex items-center justify-between py-4">
-        <a href="#top" className="flex items-center gap-3">
-          <img src={LOGO_IMG} alt="Cia Alvo" className="h-10 w-10 object-contain" />
-          <span className="font-display text-xl tracking-tight">Cia Alvo</span>
-        </a>
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
-          <a href="#sobre" className="hover:text-primary transition-colors">A Cia</a>
-          <a href="#espetaculos" className="hover:text-primary transition-colors">Espetáculos</a>
-          <a href="#direcao" className="hover:text-primary transition-colors">Direção</a>
-          <a href="#contato" className="hover:text-primary transition-colors">Contato</a>
-        </nav>
-        <a
-          href={WHATSAPP}
-          target="_blank"
-          rel="noreferrer"
-          className="inline-flex items-center rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-sm hover:opacity-90 transition"
-        >
-          Fale com a gente
-        </a>
-      </div>
-    </header>
-  );
-}
 
 function Hero() {
   return (
@@ -62,18 +36,18 @@ function Hero() {
               sensibilidade.
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
-              <a
-                href="#espetaculos"
+              <Link
+                to="/espetaculos"
                 className="inline-flex items-center rounded-full bg-ink text-cream px-7 py-3.5 text-sm font-semibold hover:bg-primary transition-colors"
               >
                 Nossos espetáculos
-              </a>
-              <a
-                href="#sobre"
+              </Link>
+              <Link
+                to="/aciaalvo"
                 className="inline-flex items-center rounded-full border border-ink/20 px-7 py-3.5 text-sm font-semibold hover:border-ink transition-colors"
               >
                 Conheça a Cia
-              </a>
+              </Link>
             </div>
           </div>
           <div className="relative">
@@ -144,36 +118,38 @@ function Shows() {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-stretch">
-          <div className="relative rounded-[2rem] overflow-hidden group">
-            <img
-              src={SHOW_IMG}
-              alt="Espetáculo Cia Alvo"
-              className="w-full h-full object-cover aspect-[4/3] group-hover:scale-105 transition-transform duration-700"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/10 to-transparent" />
-            <div className="absolute bottom-8 left-8 right-8 text-cream">
-              <span className="text-xs font-semibold uppercase tracking-widest opacity-80">
-                Em cartaz
-              </span>
-              <h3 className="mt-2 text-3xl md:text-4xl font-display">
-                Meu Pequeno Universo
-              </h3>
-            </div>
-          </div>
-
-          <blockquote className="relative rounded-[2rem] bg-ink text-cream p-10 md:p-14 flex flex-col justify-between">
-            <span className="font-display text-8xl leading-none text-accent">“</span>
-            <p className="font-display text-2xl md:text-3xl leading-snug -mt-4">
-              Lemos a Bíblia como quem ouve um eco antigo, que ainda ressoa nas
-              dores e nos sonhos do agora.
-            </p>
-            <div className="mt-8 flex items-center gap-3 text-sm opacity-80">
-              <span className="h-px w-8 bg-cream/40" />
-              Cia Alvo
-            </div>
-          </blockquote>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {SHOWS.map((s) => (
+            <Link
+              key={s.slug}
+              to="/espetaculos/$slug"
+              params={{ slug: s.slug }}
+              className="group relative overflow-hidden rounded-2xl bg-ink text-cream aspect-[4/5]"
+            >
+              <img
+                src={s.image}
+                alt={s.title}
+                className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-6">
+                <span className="text-xs uppercase tracking-widest text-accent">
+                  {s.year || "Espetáculo"}
+                </span>
+                <h3 className="mt-2 font-display text-2xl md:text-3xl">{s.title}</h3>
+                <p className="mt-1 text-sm text-cream/80">{s.subtitle}</p>
+              </div>
+            </Link>
+          ))}
         </div>
+
+        <blockquote className="mt-16 rounded-[2rem] bg-ink text-cream p-10 md:p-14 max-w-4xl mx-auto text-center">
+          <span className="font-display text-8xl leading-none text-accent">“</span>
+          <p className="font-display text-2xl md:text-3xl leading-snug -mt-4">
+            Lemos a Bíblia como quem ouve um eco antigo, que ainda ressoa nas
+            dores e nos sonhos do agora.
+          </p>
+        </blockquote>
       </div>
     </section>
   );
@@ -232,53 +208,6 @@ function Director() {
         </div>
       </div>
     </section>
-  );
-}
-
-function Footer() {
-  return (
-    <footer id="contato" className="bg-ink text-cream">
-      <div className="container-x py-20">
-        <div className="grid md:grid-cols-3 gap-12">
-          <div>
-            <img src={LOGO_IMG} alt="Cia Alvo" className="h-14 w-14 object-contain" />
-            <p className="mt-6 text-cream/70 max-w-xs leading-relaxed">
-              Teatro que toca. Arte que constrói. Experiências que ficam.
-            </p>
-          </div>
-          <div>
-            <h3 className="text-sm font-semibold uppercase tracking-widest text-accent">
-              Contato
-            </h3>
-            <ul className="mt-5 space-y-3 text-cream/80">
-              <li>
-                <a href="tel:+5511983167188" className="hover:text-accent">(11) 98316-7188</a>
-              </li>
-              <li>
-                <a href="mailto:contato@ciaalvo.com.br" className="hover:text-accent">
-                  contato@ciaalvo.com.br
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-sm font-semibold uppercase tracking-widest text-accent">
-              Siga a Cia Alvo
-            </h3>
-            <ul className="mt-5 space-y-3 text-cream/80">
-              <li><a target="_blank" rel="noreferrer" href="https://www.instagram.com/ciaalvo/" className="hover:text-accent">Instagram</a></li>
-              <li><a target="_blank" rel="noreferrer" href="https://www.facebook.com/ciaalvo" className="hover:text-accent">Facebook</a></li>
-              <li><a target="_blank" rel="noreferrer" href="https://www.youtube.com/@CiaAlvoOficial" className="hover:text-accent">YouTube</a></li>
-              <li><a target="_blank" rel="noreferrer" href={WHATSAPP} className="hover:text-accent">WhatsApp</a></li>
-            </ul>
-          </div>
-        </div>
-        <div className="mt-16 pt-8 border-t border-cream/10 text-sm text-cream/50 flex flex-wrap justify-between gap-4">
-          <span>© {new Date().getFullYear()} Cia Alvo. Todos os direitos reservados.</span>
-          <span>A Bíblia reencontrada pela arte.</span>
-        </div>
-      </div>
-    </footer>
   );
 }
 
