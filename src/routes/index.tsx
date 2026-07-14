@@ -9,8 +9,6 @@ export const Route = createFileRoute("/")({
 
 const HERO_IMG =
   "https://ciaalvo.com.br/wp-content/uploads/2022/09/DIV-1-scaled.jpg";
-const FABIANO_IMG =
-  "https://ciaalvo.com.br/wp-content/uploads/2022/09/foto-fabiano.jpg";
 const WHATSAPP =
   "https://api.whatsapp.com/send/?phone=5511983167188&text=Ol%C3%A1+%2ACia+Alvo%2A%21";
 
@@ -153,54 +151,31 @@ function Shows() {
   );
 }
 
-function Director() {
+function CTA() {
   return (
-    <section id="direcao" className="py-24 md:py-32 bg-secondary/40">
+    <section className="py-24 md:py-32 bg-secondary/40">
       <div className="container-x">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          <div className="relative order-2 lg:order-1">
-            <div className="absolute -inset-4 bg-accent/25 rounded-[2rem] rotate-2" />
-            <img
-              src={FABIANO_IMG}
-              alt="Fabiano Moreira, diretor da Cia Alvo"
-              className="relative rounded-[2rem] object-cover aspect-[4/5] w-full shadow-xl"
-            />
-          </div>
-          <div className="order-1 lg:order-2">
-            <span className="text-sm font-semibold uppercase tracking-widest text-primary">
-              Direção e visão
+        <div className="rounded-[2.5rem] bg-ink text-cream p-10 md:p-16 grid md:grid-cols-[1.4fr_1fr] gap-10 items-center">
+          <div>
+            <span className="text-xs font-semibold uppercase tracking-widest text-accent">
+              Leve a Cia Alvo para o seu palco
             </span>
-            <h2 className="mt-4 text-4xl md:text-5xl lg:text-6xl">
-              Fabiano Moreira
+            <h2 className="mt-4 font-display text-4xl md:text-5xl lg:text-6xl leading-tight">
+              Vamos criar juntos uma experiência inesquecível.
             </h2>
-            <p className="mt-6 font-display italic text-2xl md:text-3xl leading-snug text-ink/90">
-              “Fazer arte com propósito não é uma escolha estética. É uma decisão
-              de vida.”
+            <p className="mt-6 text-cream/80 text-lg max-w-lg">
+              Igrejas, teatros, escolas, festivais e eventos culturais —
+              adaptamos nossos espetáculos ao seu espaço e ao seu público.
             </p>
-            <div className="mt-8 space-y-5 text-lg text-ink/80 leading-relaxed">
-              <p>
-                Com mais de 20 anos de história no teatro,{" "}
-                <strong>Fabiano Moreira</strong> — diretor e idealizador da Cia
-                Alvo — é a mente e o coração que impulsionam nosso caminho.
-              </p>
-              <p>
-                Sua arte combina excelência técnica, fé viva e um olhar profundo
-                sobre o poder transformador da cultura.
-              </p>
-              <p>
-                Além da Cia Alvo, Fabiano é <strong>coordenador de projetos
-                da ACRIART</strong> e <strong>palestrante na formação de jovens
-                artistas</strong>, sempre incentivando carreiras guiadas por
-                propósito, valores e visão empreendedora.
-              </p>
-            </div>
+          </div>
+          <div className="flex md:justify-end">
             <a
               href={WHATSAPP}
               target="_blank"
               rel="noreferrer"
-              className="mt-10 inline-flex items-center rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-sm hover:opacity-90 transition"
+              className="inline-flex items-center rounded-full bg-accent px-8 py-4 text-sm font-semibold text-ink hover:opacity-90 transition"
             >
-              Fale com o Diretor
+              Falar no WhatsApp →
             </a>
           </div>
         </div>
@@ -217,7 +192,7 @@ function Index() {
         <Hero />
         <About />
         <Shows />
-        <Director />
+        <CTA />
       </main>
       <Footer />
     </div>
