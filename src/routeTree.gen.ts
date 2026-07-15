@@ -13,6 +13,12 @@ import { Route as EspetaculosRouteImport } from './routes/espetaculos'
 import { Route as Documentario10AnosRouteImport } from './routes/documentario-10-anos'
 import { Route as AciaalvoRouteImport } from './routes/aciaalvo'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as EspetaculosOpassageiroRouteImport } from './routes/espetaculos.opassageiro'
+import { Route as EspetaculosOmundodegaelRouteImport } from './routes/espetaculos.omundodegael'
+import { Route as EspetaculosMeupequenouniversoRouteImport } from './routes/espetaculos.meupequenouniverso'
+import { Route as EspetaculosGuardadoemsilencioRouteImport } from './routes/espetaculos.guardadoemsilencio'
+import { Route as EspetaculosGalatasRouteImport } from './routes/espetaculos.galatas'
+import { Route as EspetaculosEfesoRouteImport } from './routes/espetaculos.efeso'
 import { Route as EspetaculosSlugRouteImport } from './routes/espetaculos.$slug'
 
 const EspetaculosRoute = EspetaculosRouteImport.update({
@@ -35,6 +41,38 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EspetaculosOpassageiroRoute = EspetaculosOpassageiroRouteImport.update({
+  id: '/opassageiro',
+  path: '/opassageiro',
+  getParentRoute: () => EspetaculosRoute,
+} as any)
+const EspetaculosOmundodegaelRoute = EspetaculosOmundodegaelRouteImport.update({
+  id: '/omundodegael',
+  path: '/omundodegael',
+  getParentRoute: () => EspetaculosRoute,
+} as any)
+const EspetaculosMeupequenouniversoRoute =
+  EspetaculosMeupequenouniversoRouteImport.update({
+    id: '/meupequenouniverso',
+    path: '/meupequenouniverso',
+    getParentRoute: () => EspetaculosRoute,
+  } as any)
+const EspetaculosGuardadoemsilencioRoute =
+  EspetaculosGuardadoemsilencioRouteImport.update({
+    id: '/guardadoemsilencio',
+    path: '/guardadoemsilencio',
+    getParentRoute: () => EspetaculosRoute,
+  } as any)
+const EspetaculosGalatasRoute = EspetaculosGalatasRouteImport.update({
+  id: '/galatas',
+  path: '/galatas',
+  getParentRoute: () => EspetaculosRoute,
+} as any)
+const EspetaculosEfesoRoute = EspetaculosEfesoRouteImport.update({
+  id: '/efeso',
+  path: '/efeso',
+  getParentRoute: () => EspetaculosRoute,
+} as any)
 const EspetaculosSlugRoute = EspetaculosSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
@@ -47,6 +85,12 @@ export interface FileRoutesByFullPath {
   '/documentario-10-anos': typeof Documentario10AnosRoute
   '/espetaculos': typeof EspetaculosRouteWithChildren
   '/espetaculos/$slug': typeof EspetaculosSlugRoute
+  '/espetaculos/efeso': typeof EspetaculosEfesoRoute
+  '/espetaculos/galatas': typeof EspetaculosGalatasRoute
+  '/espetaculos/guardadoemsilencio': typeof EspetaculosGuardadoemsilencioRoute
+  '/espetaculos/meupequenouniverso': typeof EspetaculosMeupequenouniversoRoute
+  '/espetaculos/omundodegael': typeof EspetaculosOmundodegaelRoute
+  '/espetaculos/opassageiro': typeof EspetaculosOpassageiroRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -54,6 +98,12 @@ export interface FileRoutesByTo {
   '/documentario-10-anos': typeof Documentario10AnosRoute
   '/espetaculos': typeof EspetaculosRouteWithChildren
   '/espetaculos/$slug': typeof EspetaculosSlugRoute
+  '/espetaculos/efeso': typeof EspetaculosEfesoRoute
+  '/espetaculos/galatas': typeof EspetaculosGalatasRoute
+  '/espetaculos/guardadoemsilencio': typeof EspetaculosGuardadoemsilencioRoute
+  '/espetaculos/meupequenouniverso': typeof EspetaculosMeupequenouniversoRoute
+  '/espetaculos/omundodegael': typeof EspetaculosOmundodegaelRoute
+  '/espetaculos/opassageiro': typeof EspetaculosOpassageiroRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -62,6 +112,12 @@ export interface FileRoutesById {
   '/documentario-10-anos': typeof Documentario10AnosRoute
   '/espetaculos': typeof EspetaculosRouteWithChildren
   '/espetaculos/$slug': typeof EspetaculosSlugRoute
+  '/espetaculos/efeso': typeof EspetaculosEfesoRoute
+  '/espetaculos/galatas': typeof EspetaculosGalatasRoute
+  '/espetaculos/guardadoemsilencio': typeof EspetaculosGuardadoemsilencioRoute
+  '/espetaculos/meupequenouniverso': typeof EspetaculosMeupequenouniversoRoute
+  '/espetaculos/omundodegael': typeof EspetaculosOmundodegaelRoute
+  '/espetaculos/opassageiro': typeof EspetaculosOpassageiroRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -71,6 +127,12 @@ export interface FileRouteTypes {
     | '/documentario-10-anos'
     | '/espetaculos'
     | '/espetaculos/$slug'
+    | '/espetaculos/efeso'
+    | '/espetaculos/galatas'
+    | '/espetaculos/guardadoemsilencio'
+    | '/espetaculos/meupequenouniverso'
+    | '/espetaculos/omundodegael'
+    | '/espetaculos/opassageiro'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -78,6 +140,12 @@ export interface FileRouteTypes {
     | '/documentario-10-anos'
     | '/espetaculos'
     | '/espetaculos/$slug'
+    | '/espetaculos/efeso'
+    | '/espetaculos/galatas'
+    | '/espetaculos/guardadoemsilencio'
+    | '/espetaculos/meupequenouniverso'
+    | '/espetaculos/omundodegael'
+    | '/espetaculos/opassageiro'
   id:
     | '__root__'
     | '/'
@@ -85,6 +153,12 @@ export interface FileRouteTypes {
     | '/documentario-10-anos'
     | '/espetaculos'
     | '/espetaculos/$slug'
+    | '/espetaculos/efeso'
+    | '/espetaculos/galatas'
+    | '/espetaculos/guardadoemsilencio'
+    | '/espetaculos/meupequenouniverso'
+    | '/espetaculos/omundodegael'
+    | '/espetaculos/opassageiro'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -124,6 +198,48 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/espetaculos/opassageiro': {
+      id: '/espetaculos/opassageiro'
+      path: '/opassageiro'
+      fullPath: '/espetaculos/opassageiro'
+      preLoaderRoute: typeof EspetaculosOpassageiroRouteImport
+      parentRoute: typeof EspetaculosRoute
+    }
+    '/espetaculos/omundodegael': {
+      id: '/espetaculos/omundodegael'
+      path: '/omundodegael'
+      fullPath: '/espetaculos/omundodegael'
+      preLoaderRoute: typeof EspetaculosOmundodegaelRouteImport
+      parentRoute: typeof EspetaculosRoute
+    }
+    '/espetaculos/meupequenouniverso': {
+      id: '/espetaculos/meupequenouniverso'
+      path: '/meupequenouniverso'
+      fullPath: '/espetaculos/meupequenouniverso'
+      preLoaderRoute: typeof EspetaculosMeupequenouniversoRouteImport
+      parentRoute: typeof EspetaculosRoute
+    }
+    '/espetaculos/guardadoemsilencio': {
+      id: '/espetaculos/guardadoemsilencio'
+      path: '/guardadoemsilencio'
+      fullPath: '/espetaculos/guardadoemsilencio'
+      preLoaderRoute: typeof EspetaculosGuardadoemsilencioRouteImport
+      parentRoute: typeof EspetaculosRoute
+    }
+    '/espetaculos/galatas': {
+      id: '/espetaculos/galatas'
+      path: '/galatas'
+      fullPath: '/espetaculos/galatas'
+      preLoaderRoute: typeof EspetaculosGalatasRouteImport
+      parentRoute: typeof EspetaculosRoute
+    }
+    '/espetaculos/efeso': {
+      id: '/espetaculos/efeso'
+      path: '/efeso'
+      fullPath: '/espetaculos/efeso'
+      preLoaderRoute: typeof EspetaculosEfesoRouteImport
+      parentRoute: typeof EspetaculosRoute
+    }
     '/espetaculos/$slug': {
       id: '/espetaculos/$slug'
       path: '/$slug'
@@ -136,10 +252,22 @@ declare module '@tanstack/react-router' {
 
 interface EspetaculosRouteChildren {
   EspetaculosSlugRoute: typeof EspetaculosSlugRoute
+  EspetaculosEfesoRoute: typeof EspetaculosEfesoRoute
+  EspetaculosGalatasRoute: typeof EspetaculosGalatasRoute
+  EspetaculosGuardadoemsilencioRoute: typeof EspetaculosGuardadoemsilencioRoute
+  EspetaculosMeupequenouniversoRoute: typeof EspetaculosMeupequenouniversoRoute
+  EspetaculosOmundodegaelRoute: typeof EspetaculosOmundodegaelRoute
+  EspetaculosOpassageiroRoute: typeof EspetaculosOpassageiroRoute
 }
 
 const EspetaculosRouteChildren: EspetaculosRouteChildren = {
   EspetaculosSlugRoute: EspetaculosSlugRoute,
+  EspetaculosEfesoRoute: EspetaculosEfesoRoute,
+  EspetaculosGalatasRoute: EspetaculosGalatasRoute,
+  EspetaculosGuardadoemsilencioRoute: EspetaculosGuardadoemsilencioRoute,
+  EspetaculosMeupequenouniversoRoute: EspetaculosMeupequenouniversoRoute,
+  EspetaculosOmundodegaelRoute: EspetaculosOmundodegaelRoute,
+  EspetaculosOpassageiroRoute: EspetaculosOpassageiroRoute,
 }
 
 const EspetaculosRouteWithChildren = EspetaculosRoute._addFileChildren(
@@ -155,13 +283,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
