@@ -3,7 +3,7 @@ import { Nav } from "../components/site/Nav";
 import { Footer } from "../components/site/Footer";
 import { SHOWS } from "../lib/shows";
 
-export const Route = createFileRoute("/espetaculos")({
+export const Route = createFileRoute("/espetaculos/")({
   head: () => ({
     meta: [
       { title: "Espetáculos — Cia Alvo" },

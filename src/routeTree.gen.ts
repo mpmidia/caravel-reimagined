@@ -9,10 +9,10 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as EspetaculosRouteImport } from './routes/espetaculos'
 import { Route as Documentario10AnosRouteImport } from './routes/documentario-10-anos'
 import { Route as AciaalvoRouteImport } from './routes/aciaalvo'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as EspetaculosIndexRouteImport } from './routes/espetaculos.index'
 import { Route as EspetaculosOpassageiroRouteImport } from './routes/espetaculos.opassageiro'
 import { Route as EspetaculosOmundodegaelRouteImport } from './routes/espetaculos.omundodegael'
 import { Route as EspetaculosMeupequenouniversoRouteImport } from './routes/espetaculos.meupequenouniverso'
@@ -21,11 +21,6 @@ import { Route as EspetaculosGalatasRouteImport } from './routes/espetaculos.gal
 import { Route as EspetaculosEfesoRouteImport } from './routes/espetaculos.efeso'
 import { Route as EspetaculosSlugRouteImport } from './routes/espetaculos.$slug'
 
-const EspetaculosRoute = EspetaculosRouteImport.update({
-  id: '/espetaculos',
-  path: '/espetaculos',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const Documentario10AnosRoute = Documentario10AnosRouteImport.update({
   id: '/documentario-10-anos',
   path: '/documentario-10-anos',
@@ -41,49 +36,53 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EspetaculosIndexRoute = EspetaculosIndexRouteImport.update({
+  id: '/espetaculos/',
+  path: '/espetaculos/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EspetaculosOpassageiroRoute = EspetaculosOpassageiroRouteImport.update({
-  id: '/opassageiro',
-  path: '/opassageiro',
-  getParentRoute: () => EspetaculosRoute,
+  id: '/espetaculos/opassageiro',
+  path: '/espetaculos/opassageiro',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const EspetaculosOmundodegaelRoute = EspetaculosOmundodegaelRouteImport.update({
-  id: '/omundodegael',
-  path: '/omundodegael',
-  getParentRoute: () => EspetaculosRoute,
+  id: '/espetaculos/omundodegael',
+  path: '/espetaculos/omundodegael',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const EspetaculosMeupequenouniversoRoute =
   EspetaculosMeupequenouniversoRouteImport.update({
-    id: '/meupequenouniverso',
-    path: '/meupequenouniverso',
-    getParentRoute: () => EspetaculosRoute,
+    id: '/espetaculos/meupequenouniverso',
+    path: '/espetaculos/meupequenouniverso',
+    getParentRoute: () => rootRouteImport,
   } as any)
 const EspetaculosGuardadoemsilencioRoute =
   EspetaculosGuardadoemsilencioRouteImport.update({
-    id: '/guardadoemsilencio',
-    path: '/guardadoemsilencio',
-    getParentRoute: () => EspetaculosRoute,
+    id: '/espetaculos/guardadoemsilencio',
+    path: '/espetaculos/guardadoemsilencio',
+    getParentRoute: () => rootRouteImport,
   } as any)
 const EspetaculosGalatasRoute = EspetaculosGalatasRouteImport.update({
-  id: '/galatas',
-  path: '/galatas',
-  getParentRoute: () => EspetaculosRoute,
+  id: '/espetaculos/galatas',
+  path: '/espetaculos/galatas',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const EspetaculosEfesoRoute = EspetaculosEfesoRouteImport.update({
-  id: '/efeso',
-  path: '/efeso',
-  getParentRoute: () => EspetaculosRoute,
+  id: '/espetaculos/efeso',
+  path: '/espetaculos/efeso',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const EspetaculosSlugRoute = EspetaculosSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => EspetaculosRoute,
+  id: '/espetaculos/$slug',
+  path: '/espetaculos/$slug',
+  getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/aciaalvo': typeof AciaalvoRoute
   '/documentario-10-anos': typeof Documentario10AnosRoute
-  '/espetaculos': typeof EspetaculosRouteWithChildren
   '/espetaculos/$slug': typeof EspetaculosSlugRoute
   '/espetaculos/efeso': typeof EspetaculosEfesoRoute
   '/espetaculos/galatas': typeof EspetaculosGalatasRoute
@@ -91,12 +90,12 @@ export interface FileRoutesByFullPath {
   '/espetaculos/meupequenouniverso': typeof EspetaculosMeupequenouniversoRoute
   '/espetaculos/omundodegael': typeof EspetaculosOmundodegaelRoute
   '/espetaculos/opassageiro': typeof EspetaculosOpassageiroRoute
+  '/espetaculos/': typeof EspetaculosIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/aciaalvo': typeof AciaalvoRoute
   '/documentario-10-anos': typeof Documentario10AnosRoute
-  '/espetaculos': typeof EspetaculosRouteWithChildren
   '/espetaculos/$slug': typeof EspetaculosSlugRoute
   '/espetaculos/efeso': typeof EspetaculosEfesoRoute
   '/espetaculos/galatas': typeof EspetaculosGalatasRoute
@@ -104,13 +103,13 @@ export interface FileRoutesByTo {
   '/espetaculos/meupequenouniverso': typeof EspetaculosMeupequenouniversoRoute
   '/espetaculos/omundodegael': typeof EspetaculosOmundodegaelRoute
   '/espetaculos/opassageiro': typeof EspetaculosOpassageiroRoute
+  '/espetaculos': typeof EspetaculosIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/aciaalvo': typeof AciaalvoRoute
   '/documentario-10-anos': typeof Documentario10AnosRoute
-  '/espetaculos': typeof EspetaculosRouteWithChildren
   '/espetaculos/$slug': typeof EspetaculosSlugRoute
   '/espetaculos/efeso': typeof EspetaculosEfesoRoute
   '/espetaculos/galatas': typeof EspetaculosGalatasRoute
@@ -118,6 +117,7 @@ export interface FileRoutesById {
   '/espetaculos/meupequenouniverso': typeof EspetaculosMeupequenouniversoRoute
   '/espetaculos/omundodegael': typeof EspetaculosOmundodegaelRoute
   '/espetaculos/opassageiro': typeof EspetaculosOpassageiroRoute
+  '/espetaculos/': typeof EspetaculosIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -125,7 +125,6 @@ export interface FileRouteTypes {
     | '/'
     | '/aciaalvo'
     | '/documentario-10-anos'
-    | '/espetaculos'
     | '/espetaculos/$slug'
     | '/espetaculos/efeso'
     | '/espetaculos/galatas'
@@ -133,12 +132,12 @@ export interface FileRouteTypes {
     | '/espetaculos/meupequenouniverso'
     | '/espetaculos/omundodegael'
     | '/espetaculos/opassageiro'
+    | '/espetaculos/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/aciaalvo'
     | '/documentario-10-anos'
-    | '/espetaculos'
     | '/espetaculos/$slug'
     | '/espetaculos/efeso'
     | '/espetaculos/galatas'
@@ -146,12 +145,12 @@ export interface FileRouteTypes {
     | '/espetaculos/meupequenouniverso'
     | '/espetaculos/omundodegael'
     | '/espetaculos/opassageiro'
+    | '/espetaculos'
   id:
     | '__root__'
     | '/'
     | '/aciaalvo'
     | '/documentario-10-anos'
-    | '/espetaculos'
     | '/espetaculos/$slug'
     | '/espetaculos/efeso'
     | '/espetaculos/galatas'
@@ -159,24 +158,25 @@ export interface FileRouteTypes {
     | '/espetaculos/meupequenouniverso'
     | '/espetaculos/omundodegael'
     | '/espetaculos/opassageiro'
+    | '/espetaculos/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AciaalvoRoute: typeof AciaalvoRoute
   Documentario10AnosRoute: typeof Documentario10AnosRoute
-  EspetaculosRoute: typeof EspetaculosRouteWithChildren
+  EspetaculosSlugRoute: typeof EspetaculosSlugRoute
+  EspetaculosEfesoRoute: typeof EspetaculosEfesoRoute
+  EspetaculosGalatasRoute: typeof EspetaculosGalatasRoute
+  EspetaculosGuardadoemsilencioRoute: typeof EspetaculosGuardadoemsilencioRoute
+  EspetaculosMeupequenouniversoRoute: typeof EspetaculosMeupequenouniversoRoute
+  EspetaculosOmundodegaelRoute: typeof EspetaculosOmundodegaelRoute
+  EspetaculosOpassageiroRoute: typeof EspetaculosOpassageiroRoute
+  EspetaculosIndexRoute: typeof EspetaculosIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/espetaculos': {
-      id: '/espetaculos'
-      path: '/espetaculos'
-      fullPath: '/espetaculos'
-      preLoaderRoute: typeof EspetaculosRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/documentario-10-anos': {
       id: '/documentario-10-anos'
       path: '/documentario-10-anos'
@@ -198,69 +198,69 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/espetaculos/': {
+      id: '/espetaculos/'
+      path: '/espetaculos'
+      fullPath: '/espetaculos/'
+      preLoaderRoute: typeof EspetaculosIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/espetaculos/opassageiro': {
       id: '/espetaculos/opassageiro'
-      path: '/opassageiro'
+      path: '/espetaculos/opassageiro'
       fullPath: '/espetaculos/opassageiro'
       preLoaderRoute: typeof EspetaculosOpassageiroRouteImport
-      parentRoute: typeof EspetaculosRoute
+      parentRoute: typeof rootRouteImport
     }
     '/espetaculos/omundodegael': {
       id: '/espetaculos/omundodegael'
-      path: '/omundodegael'
+      path: '/espetaculos/omundodegael'
       fullPath: '/espetaculos/omundodegael'
       preLoaderRoute: typeof EspetaculosOmundodegaelRouteImport
-      parentRoute: typeof EspetaculosRoute
+      parentRoute: typeof rootRouteImport
     }
     '/espetaculos/meupequenouniverso': {
       id: '/espetaculos/meupequenouniverso'
-      path: '/meupequenouniverso'
+      path: '/espetaculos/meupequenouniverso'
       fullPath: '/espetaculos/meupequenouniverso'
       preLoaderRoute: typeof EspetaculosMeupequenouniversoRouteImport
-      parentRoute: typeof EspetaculosRoute
+      parentRoute: typeof rootRouteImport
     }
     '/espetaculos/guardadoemsilencio': {
       id: '/espetaculos/guardadoemsilencio'
-      path: '/guardadoemsilencio'
+      path: '/espetaculos/guardadoemsilencio'
       fullPath: '/espetaculos/guardadoemsilencio'
       preLoaderRoute: typeof EspetaculosGuardadoemsilencioRouteImport
-      parentRoute: typeof EspetaculosRoute
+      parentRoute: typeof rootRouteImport
     }
     '/espetaculos/galatas': {
       id: '/espetaculos/galatas'
-      path: '/galatas'
+      path: '/espetaculos/galatas'
       fullPath: '/espetaculos/galatas'
       preLoaderRoute: typeof EspetaculosGalatasRouteImport
-      parentRoute: typeof EspetaculosRoute
+      parentRoute: typeof rootRouteImport
     }
     '/espetaculos/efeso': {
       id: '/espetaculos/efeso'
-      path: '/efeso'
+      path: '/espetaculos/efeso'
       fullPath: '/espetaculos/efeso'
       preLoaderRoute: typeof EspetaculosEfesoRouteImport
-      parentRoute: typeof EspetaculosRoute
+      parentRoute: typeof rootRouteImport
     }
     '/espetaculos/$slug': {
       id: '/espetaculos/$slug'
-      path: '/$slug'
+      path: '/espetaculos/$slug'
       fullPath: '/espetaculos/$slug'
       preLoaderRoute: typeof EspetaculosSlugRouteImport
-      parentRoute: typeof EspetaculosRoute
+      parentRoute: typeof rootRouteImport
     }
   }
 }
 
-interface EspetaculosRouteChildren {
-  EspetaculosSlugRoute: typeof EspetaculosSlugRoute
-  EspetaculosEfesoRoute: typeof EspetaculosEfesoRoute
-  EspetaculosGalatasRoute: typeof EspetaculosGalatasRoute
-  EspetaculosGuardadoemsilencioRoute: typeof EspetaculosGuardadoemsilencioRoute
-  EspetaculosMeupequenouniversoRoute: typeof EspetaculosMeupequenouniversoRoute
-  EspetaculosOmundodegaelRoute: typeof EspetaculosOmundodegaelRoute
-  EspetaculosOpassageiroRoute: typeof EspetaculosOpassageiroRoute
-}
-
-const EspetaculosRouteChildren: EspetaculosRouteChildren = {
+const rootRouteChildren: RootRouteChildren = {
+  IndexRoute: IndexRoute,
+  AciaalvoRoute: AciaalvoRoute,
+  Documentario10AnosRoute: Documentario10AnosRoute,
   EspetaculosSlugRoute: EspetaculosSlugRoute,
   EspetaculosEfesoRoute: EspetaculosEfesoRoute,
   EspetaculosGalatasRoute: EspetaculosGalatasRoute,
@@ -268,17 +268,7 @@ const EspetaculosRouteChildren: EspetaculosRouteChildren = {
   EspetaculosMeupequenouniversoRoute: EspetaculosMeupequenouniversoRoute,
   EspetaculosOmundodegaelRoute: EspetaculosOmundodegaelRoute,
   EspetaculosOpassageiroRoute: EspetaculosOpassageiroRoute,
-}
-
-const EspetaculosRouteWithChildren = EspetaculosRoute._addFileChildren(
-  EspetaculosRouteChildren,
-)
-
-const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
-  AciaalvoRoute: AciaalvoRoute,
-  Documentario10AnosRoute: Documentario10AnosRoute,
-  EspetaculosRoute: EspetaculosRouteWithChildren,
+  EspetaculosIndexRoute: EspetaculosIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
