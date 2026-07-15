@@ -8,6 +8,16 @@ export type Show = {
   intro: string;
   sections: { heading: string; body: string[] }[];
   quote: string;
+  duration?: string;
+  classification?: string;
+  audience?: string;
+  genre?: string;
+  highlights?: { title: string; text: string }[];
+  credits?: { role: string; name: string }[];
+  formats?: { label: string; description: string }[];
+  gallery?: string[];
+  faq?: { q: string; a: string }[];
+  cta?: string;
 };
 
 export const SHOWS: Show[] = [
