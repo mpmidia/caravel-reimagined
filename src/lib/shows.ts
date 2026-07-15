@@ -8,6 +8,16 @@ export type Show = {
   intro: string;
   sections: { heading: string; body: string[] }[];
   quote: string;
+  duration?: string;
+  classification?: string;
+  audience?: string;
+  genre?: string;
+  highlights?: { title: string; text: string }[];
+  credits?: { role: string; name: string }[];
+  formats?: { label: string; description: string }[];
+  gallery?: string[];
+  faq?: { q: string; a: string }[];
+  cta?: string;
 };
 
 export const SHOWS: Show[] = [
@@ -38,6 +48,30 @@ export const SHOWS: Show[] = [
       },
     ],
     quote: "Porque rir também é uma forma de aprender — e de libertar.",
+    duration: "60 min",
+    classification: "Livre",
+    audience: "Toda a família, jovens e adultos",
+    genre: "Comédia dramática com música ao vivo",
+    highlights: [
+      { title: "Cultura celta em cena", text: "Figurinos, danças e trilha inspirados nas raízes irlandesas que dialogam com os antigos gálatas." },
+      { title: "Humor com profundidade", text: "Uma comédia que faz rir e provoca reflexão sobre liberdade e fé." },
+      { title: "Trilha ao vivo", text: "Do sacro erudito às valsas folclóricas — música executada em cena." },
+    ],
+    credits: [
+      { role: "Texto e direção", name: "Cia Alvo" },
+      { role: "Inspiração bíblica", name: "Carta aos Gálatas" },
+      { role: "Ambientação", name: "Irish Pub em Trôade, à beira do Mar Egeu" },
+    ],
+    formats: [
+      { label: "Palco italiano", description: "Montagem completa com cenário, figurino e trilha ao vivo." },
+      { label: "Arena / igreja", description: "Adaptação para espaços não convencionais preservando a experiência." },
+    ],
+    faq: [
+      { q: "Qual é a duração?", a: "Aproximadamente 60 minutos, sem intervalo." },
+      { q: "Precisa de estrutura especial?", a: "Nos adaptamos ao seu espaço — envie a planta e conversamos sobre o rider técnico." },
+      { q: "Serve para o público infantil?", a: "É classificação livre; o humor conquista adultos e adolescentes especialmente." },
+    ],
+    cta: "Traga Gálatas para o seu palco",
   },
   {
     slug: "efeso",
@@ -67,6 +101,29 @@ export const SHOWS: Show[] = [
       },
     ],
     quote: "O que acontece quando a espada se choca com a fé?",
+    duration: "50 min",
+    classification: "12 anos",
+    audience: "Jovens e adultos",
+    genre: "Drama épico contemporâneo",
+    highlights: [
+      { title: "Estética medieval-contemporânea", text: "Cenário de batalha, simbolismos visuais e coreografias de combate." },
+      { title: "Diálogos filosóficos", text: "Um confronto entre a força da espada e a fé que nasce do amor." },
+      { title: "Formato enxuto", text: "50 minutos intensos, ideais para temporadas e circulação." },
+    ],
+    credits: [
+      { role: "Direção", name: "Cia Alvo" },
+      { role: "Inspiração bíblica", name: "Carta aos Efésios / Apocalipse 2" },
+      { role: "Ambientação", name: "Cruzadas — século XI" },
+    ],
+    formats: [
+      { label: "Teatro convencional", description: "Ideal para caixas pretas e teatros com pé-direito para as cenas de combate." },
+      { label: "Espaços alternativos", description: "Versão itinerante para pátios, igrejas e centros culturais." },
+    ],
+    faq: [
+      { q: "Contém cenas de violência?", a: "Há coreografias de combate estilizadas, sem realismo gráfico." },
+      { q: "Qual o tamanho do elenco?", a: "Elenco itinerante compacto — enviamos rider e mapa de luz sob demanda." },
+    ],
+    cta: "Contratar Éfeso",
   },
   {
     slug: "guardadoemsilencio",
@@ -95,6 +152,29 @@ export const SHOWS: Show[] = [
       },
     ],
     quote: "Mesmo nas trevas, há espaço para luz.",
+    duration: "55 min",
+    classification: "14 anos",
+    audience: "Jovens e adultos",
+    genre: "Drama histórico com forte carga simbólica",
+    highlights: [
+      { title: "Memória sensível", text: "Uma imersão nas marcas deixadas pela Noite dos Cristais Quebrados." },
+      { title: "Reflexão sobre a omissão", text: "Convite a encarar os silêncios que ainda carregamos hoje." },
+      { title: "Linguagem poética", text: "Cena, som e imagem tecidos com delicadeza e potência." },
+    ],
+    credits: [
+      { role: "Direção", name: "Cia Alvo" },
+      { role: "Inspiração bíblica", name: "Carta aos Romanos" },
+      { role: "Contexto histórico", name: "Alemanha, 1939" },
+    ],
+    formats: [
+      { label: "Palco tradicional", description: "Montagem completa com projeções e trilha desenhada." },
+      { label: "Círculo de conversa", description: "Sessão com mediação e bate-papo após a apresentação." },
+    ],
+    faq: [
+      { q: "É adequado para escolas?", a: "Sim, especialmente ensino médio — oferecemos material pedagógico e mediação." },
+      { q: "Aborda a religião de forma direta?", a: "A espiritualidade aparece como caminho de redenção, sem discurso doutrinário." },
+    ],
+    cta: "Levar Guardado em Silêncio ao seu público",
   },
   {
     slug: "meupequenouniverso",
@@ -122,6 +202,29 @@ export const SHOWS: Show[] = [
       },
     ],
     quote: "Porque grandes ideias nascem da curiosidade. E todo pequeno universo pode ser extraordinário.",
+    duration: "50 min",
+    classification: "Livre",
+    audience: "Crianças a partir de 4 anos e famílias",
+    genre: "Musical infantil",
+    highlights: [
+      { title: "Música ao vivo", text: "Canções originais executadas em cena por músicos-atores." },
+      { title: "Visual lúdico", text: "Um laboratório fantástico onde tudo pode ganhar vida." },
+      { title: "Valores em cena", text: "Curiosidade, responsabilidade, cuidado e pertencimento." },
+    ],
+    credits: [
+      { role: "Direção", name: "Cia Alvo" },
+      { role: "Inspiração bíblica", name: "Gênesis — a Criação" },
+      { role: "Personagens", name: "Stephen, o arquiteto e o Pequeno Universo" },
+    ],
+    formats: [
+      { label: "Teatro infantil", description: "Sessões abertas com toda a estrutura da montagem." },
+      { label: "Escolas e eventos", description: "Adaptação para auditórios escolares e programações de férias." },
+    ],
+    faq: [
+      { q: "A partir de que idade?", a: "Recomendada a partir dos 4 anos; encanta também os adultos." },
+      { q: "Tem interação com o público?", a: "Sim, momentos de participação cuidadosamente pensados." },
+    ],
+    cta: "Levar Meu Pequeno Universo ao seu público",
   },
   {
     slug: "opassageiro",
@@ -155,6 +258,29 @@ export const SHOWS: Show[] = [
       },
     ],
     quote: "Uma obra visual. Um grito silencioso. Um convite à introspecção.",
+    duration: "45 min",
+    classification: "Livre",
+    audience: "Todos os públicos — sem barreiras de idioma",
+    genre: "Teatro visual, físico e audiovisual",
+    highlights: [
+      { title: "Sem palavras", text: "Uma dramaturgia contada por corpo, imagem e som." },
+      { title: "Universal", text: "Compreensível em qualquer país e cultura." },
+      { title: "Versão online", text: "Adaptação para apresentações digitais que ampliam o alcance." },
+    ],
+    credits: [
+      { role: "Concepção", name: "Cia Alvo" },
+      { role: "Linguagem", name: "Teatro físico com audiovisual e música ao vivo" },
+      { role: "Personagem central", name: "O pregador em meio ao caos" },
+    ],
+    formats: [
+      { label: "Presencial", description: "Palco ou espaço não convencional com projeção." },
+      { label: "Online", description: "Versão pensada para transmissão e eventos digitais." },
+    ],
+    faq: [
+      { q: "Precisa de idioma comum?", a: "Não. A peça dispensa palavras e atravessa qualquer cultura." },
+      { q: "Serve para eventos corporativos?", a: "Sim — o formato se adapta muito bem a convenções e encontros." },
+    ],
+    cta: "Receber O Passageiro no seu evento",
   },
   {
     slug: "omundodegael",
@@ -183,6 +309,30 @@ export const SHOWS: Show[] = [
       },
     ],
     quote: "Entender o outro é um ato de fé — e a diferença pode ser um caminho para o amor.",
+    duration: "60 min",
+    classification: "Livre",
+    audience: "Famílias, escolas e comunidades",
+    genre: "Drama sensível com humor e poesia",
+    highlights: [
+      { title: "TEA em cena", text: "Uma história construída com escuta e responsabilidade sobre o autismo." },
+      { title: "Personagens marcantes", text: "Gael, Seu Tato e o Mestre Engrenaldo em uma jornada de descobertas." },
+      { title: "Sessões acessíveis", text: "Possibilidade de apresentações com adaptações sensoriais." },
+    ],
+    credits: [
+      { role: "Direção", name: "Cia Alvo" },
+      { role: "Estreia", name: "Teatro Sérgio Cardoso — 2025" },
+      { role: "Consultoria", name: "Diálogo com famílias atípicas e educadores" },
+    ],
+    formats: [
+      { label: "Sessão aberta", description: "Apresentações em teatros para o público em geral." },
+      { label: "Sessão acessível", description: "Ambiente com estímulos reduzidos para pessoas neurodivergentes." },
+      { label: "Escolas", description: "Circuitos escolares com material pedagógico e roda de conversa." },
+    ],
+    faq: [
+      { q: "É indicado para crianças autistas?", a: "Sim, e oferecemos versão com adaptações sensoriais (som e luz)." },
+      { q: "Tem material pedagógico?", a: "Sim, disponibilizamos guia para educadores e responsáveis." },
+    ],
+    cta: "Agendar O Mundo de Gael",
   },
 ];
 

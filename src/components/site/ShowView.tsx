@@ -8,11 +8,20 @@ const WHATSAPP =
 
 export function ShowView({ show }: { show: Show }) {
   const others = SHOWS.filter((s) => s.slug !== show.slug).slice(0, 3);
+  const ctaLabel = show.cta ?? `Levar ${show.title} para o meu palco`;
+
+  const meta = [
+    { label: "Estreia", value: show.year || "—" },
+    { label: "Duração", value: show.duration ?? "50–70 min" },
+    { label: "Classificação", value: show.classification ?? "Livre" },
+    { label: "Categoria", value: show.subtitle },
+  ];
 
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Nav />
       <main>
+        {/* HERO */}
         <section className="relative overflow-hidden bg-ink text-cream">
           <div
             className="absolute inset-0 opacity-30"
@@ -26,10 +35,7 @@ export function ShowView({ show }: { show: Show }) {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/85 to-ink" aria-hidden />
           <div className="relative container-x pt-10 md:pt-16">
-            <Link
-              to="/espetaculos"
-              className="text-sm text-cream/70 hover:text-accent transition-colors"
-            >
+            <Link to="/espetaculos" className="text-sm text-cream/70 hover:text-accent transition-colors">
               ← Todos os espetáculos
             </Link>
           </div>
@@ -54,7 +60,7 @@ export function ShowView({ show }: { show: Show }) {
                     rel="noreferrer"
                     className="inline-flex items-center rounded-full bg-accent px-7 py-3.5 text-sm font-semibold text-ink hover:opacity-90 transition"
                   >
-                    Contratar espetáculo
+                    {ctaLabel}
                   </a>
                   <a
                     href="#sobre"
@@ -77,14 +83,10 @@ export function ShowView({ show }: { show: Show }) {
           </div>
         </section>
 
+        {/* META STRIP */}
         <section className="border-b border-ink/10 bg-cream">
           <div className="container-x grid grid-cols-2 md:grid-cols-4 gap-6 py-8">
-            {[
-              { label: "Ano de estreia", value: show.year || "—" },
-              { label: "Categoria", value: show.subtitle },
-              { label: "Duração", value: "50–70 min" },
-              { label: "Classificação", value: "Livre" },
-            ].map((m) => (
+            {meta.map((m) => (
               <div key={m.label}>
                 <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
                   {m.label}
@@ -95,6 +97,7 @@ export function ShowView({ show }: { show: Show }) {
           </div>
         </section>
 
+        {/* SINOPSE */}
         <section id="sobre" className="py-20 md:py-28">
           <div className="container-x">
             <div className="grid md:grid-cols-[0.4fr_1.6fr] gap-8 md:gap-16 items-start max-w-6xl">
@@ -111,13 +114,32 @@ export function ShowView({ show }: { show: Show }) {
           </div>
         </section>
 
+        {/* DESTAQUES */}
+        {show.highlights && show.highlights.length > 0 && (
+          <section className="bg-cream/60 py-20 md:py-28 border-y border-ink/5">
+            <div className="container-x">
+              <div className="max-w-2xl">
+                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">Destaques</span>
+                <h2 className="mt-3 font-display text-4xl md:text-5xl text-ink">Por que este espetáculo</h2>
+              </div>
+              <div className="mt-12 grid md:grid-cols-3 gap-6">
+                {show.highlights.map((h, i) => (
+                  <div key={i} className="rounded-2xl bg-background p-8 shadow-sm border border-ink/5">
+                    <div className="font-display text-3xl text-primary/50">{String(i + 1).padStart(2, "0")}</div>
+                    <h3 className="mt-4 font-display text-2xl text-ink">{h.title}</h3>
+                    <p className="mt-3 text-ink/70 leading-relaxed">{h.text}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* SEÇÕES NARRATIVAS */}
         <section className="bg-secondary/40 py-20 md:py-28">
           <div className="container-x space-y-20 md:space-y-28">
             {show.sections.map((sec, i) => (
-              <div
-                key={i}
-                className="grid md:grid-cols-[0.9fr_1.6fr] gap-8 md:gap-16"
-              >
+              <div key={i} className="grid md:grid-cols-[0.9fr_1.6fr] gap-8 md:gap-16">
                 <div>
                   <span className="font-display text-6xl md:text-7xl text-primary/40">
                     {String(i + 1).padStart(2, "0")}
@@ -136,6 +158,62 @@ export function ShowView({ show }: { show: Show }) {
           </div>
         </section>
 
+        {/* FICHA + FORMATOS */}
+        {(show.credits || show.formats || show.audience || show.genre) && (
+          <section className="py-20 md:py-28">
+            <div className="container-x grid lg:grid-cols-2 gap-12 lg:gap-16">
+              {(show.credits || show.audience || show.genre) && (
+                <div className="rounded-3xl bg-ink text-cream p-10 md:p-12">
+                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Ficha técnica</span>
+                  <h2 className="mt-3 font-display text-4xl">Sobre a montagem</h2>
+                  <dl className="mt-10 space-y-5">
+                    {show.genre && (
+                      <div className="flex gap-6 border-b border-cream/10 pb-4">
+                        <dt className="w-40 shrink-0 text-cream/60 text-sm uppercase tracking-widest">Gênero</dt>
+                        <dd className="text-cream">{show.genre}</dd>
+                      </div>
+                    )}
+                    {show.audience && (
+                      <div className="flex gap-6 border-b border-cream/10 pb-4">
+                        <dt className="w-40 shrink-0 text-cream/60 text-sm uppercase tracking-widest">Público</dt>
+                        <dd className="text-cream">{show.audience}</dd>
+                      </div>
+                    )}
+                    {show.credits?.map((c) => (
+                      <div key={c.role} className="flex gap-6 border-b border-cream/10 pb-4 last:border-0">
+                        <dt className="w-40 shrink-0 text-cream/60 text-sm uppercase tracking-widest">{c.role}</dt>
+                        <dd className="text-cream">{c.name}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </div>
+              )}
+              {show.formats && show.formats.length > 0 && (
+                <div>
+                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">Formatos</span>
+                  <h2 className="mt-3 font-display text-4xl text-ink">Como levar até você</h2>
+                  <p className="mt-4 text-ink/70">
+                    Adaptamos a montagem ao seu espaço, evento e público. Escolha o formato mais adequado
+                    e conversamos sobre o rider técnico e logística.
+                  </p>
+                  <div className="mt-8 space-y-4">
+                    {show.formats.map((f) => (
+                      <div key={f.label} className="rounded-2xl border border-ink/10 bg-cream/70 p-6">
+                        <div className="flex items-center gap-3">
+                          <span className="h-2 w-2 rounded-full bg-accent" />
+                          <h3 className="font-display text-xl text-ink">{f.label}</h3>
+                        </div>
+                        <p className="mt-2 text-ink/70 leading-relaxed">{f.description}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          </section>
+        )}
+
+        {/* IMAGE BAND */}
         <section className="relative h-[50vh] md:h-[70vh] overflow-hidden">
           <img
             src={show.image}
@@ -150,23 +228,75 @@ export function ShowView({ show }: { show: Show }) {
           </div>
         </section>
 
+        {/* QUOTE */}
         <section className="bg-ink text-cream py-20 md:py-28">
           <div className="container-x max-w-4xl text-center">
             <span className="font-display text-8xl leading-none text-accent">“</span>
             <p className="font-display italic text-3xl md:text-4xl leading-snug -mt-6">
               {show.quote}
             </p>
-            <a
-              href={WHATSAPP}
-              target="_blank"
-              rel="noreferrer"
-              className="mt-12 inline-flex items-center rounded-full bg-accent px-8 py-4 text-sm font-semibold text-ink hover:opacity-90 transition"
-            >
-              Levar {show.title} para o meu palco
-            </a>
           </div>
         </section>
 
+        {/* FAQ */}
+        {show.faq && show.faq.length > 0 && (
+          <section className="py-20 md:py-28">
+            <div className="container-x grid md:grid-cols-[0.6fr_1.4fr] gap-12">
+              <div>
+                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">Perguntas frequentes</span>
+                <h2 className="mt-3 font-display text-4xl text-ink">Antes de agendar</h2>
+                <p className="mt-4 text-ink/70">Reunimos as dúvidas mais comuns. Se algo mais surgir, fale com a gente pelo WhatsApp.</p>
+              </div>
+              <div className="space-y-4">
+                {show.faq.map((item, i) => (
+                  <details
+                    key={i}
+                    className="group rounded-2xl border border-ink/10 bg-cream/60 p-6 open:bg-cream"
+                  >
+                    <summary className="cursor-pointer list-none font-display text-lg md:text-xl text-ink flex justify-between items-start gap-4">
+                      <span>{item.q}</span>
+                      <span className="text-primary text-2xl leading-none group-open:rotate-45 transition-transform">
+                        +
+                      </span>
+                    </summary>
+                    <p className="mt-3 text-ink/70 leading-relaxed">{item.a}</p>
+                  </details>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* CTA FINAL */}
+        <section className="bg-gradient-to-br from-primary/90 to-ink text-cream py-24 md:py-32">
+          <div className="container-x max-w-4xl text-center">
+            <span className="text-xs font-semibold uppercase tracking-[0.3em] text-accent">Vamos conversar</span>
+            <h2 className="mt-4 font-display text-4xl md:text-6xl leading-tight">
+              Pronto para receber {show.title}?
+            </h2>
+            <p className="mt-6 text-lg text-cream/80 max-w-2xl mx-auto">
+              Conte para nós sobre o seu espaço, público e data desejada. Respondemos com um orçamento e o rider técnico da montagem.
+            </p>
+            <div className="mt-10 flex flex-wrap gap-4 justify-center">
+              <a
+                href={WHATSAPP}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center rounded-full bg-accent px-8 py-4 text-sm font-semibold text-ink hover:opacity-90 transition"
+              >
+                {ctaLabel}
+              </a>
+              <Link
+                to="/espetaculos"
+                className="inline-flex items-center rounded-full border border-cream/30 px-8 py-4 text-sm font-semibold text-cream hover:border-accent hover:text-accent transition"
+              >
+                Ver todos os espetáculos
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* OUTROS */}
         <section className="container-x py-20 md:py-28">
           <div className="flex items-end justify-between mb-10">
             <h2 className="font-display text-3xl md:text-4xl">Outros espetáculos</h2>
