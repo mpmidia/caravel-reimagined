@@ -13,6 +13,7 @@ import { Route as EspetaculosRouteImport } from './routes/espetaculos'
 import { Route as Documentario10AnosRouteImport } from './routes/documentario-10-anos'
 import { Route as AciaalvoRouteImport } from './routes/aciaalvo'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as EspetaculosGalatasRouteImport } from './routes/espetaculos.galatas'
 import { Route as EspetaculosSlugRouteImport } from './routes/espetaculos.$slug'
 
 const EspetaculosRoute = EspetaculosRouteImport.update({
@@ -35,6 +36,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EspetaculosGalatasRoute = EspetaculosGalatasRouteImport.update({
+  id: '/galatas',
+  path: '/galatas',
+  getParentRoute: () => EspetaculosRoute,
+} as any)
 const EspetaculosSlugRoute = EspetaculosSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
@@ -47,6 +53,7 @@ export interface FileRoutesByFullPath {
   '/documentario-10-anos': typeof Documentario10AnosRoute
   '/espetaculos': typeof EspetaculosRouteWithChildren
   '/espetaculos/$slug': typeof EspetaculosSlugRoute
+  '/espetaculos/galatas': typeof EspetaculosGalatasRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -54,6 +61,7 @@ export interface FileRoutesByTo {
   '/documentario-10-anos': typeof Documentario10AnosRoute
   '/espetaculos': typeof EspetaculosRouteWithChildren
   '/espetaculos/$slug': typeof EspetaculosSlugRoute
+  '/espetaculos/galatas': typeof EspetaculosGalatasRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -62,6 +70,7 @@ export interface FileRoutesById {
   '/documentario-10-anos': typeof Documentario10AnosRoute
   '/espetaculos': typeof EspetaculosRouteWithChildren
   '/espetaculos/$slug': typeof EspetaculosSlugRoute
+  '/espetaculos/galatas': typeof EspetaculosGalatasRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -71,6 +80,7 @@ export interface FileRouteTypes {
     | '/documentario-10-anos'
     | '/espetaculos'
     | '/espetaculos/$slug'
+    | '/espetaculos/galatas'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -78,6 +88,7 @@ export interface FileRouteTypes {
     | '/documentario-10-anos'
     | '/espetaculos'
     | '/espetaculos/$slug'
+    | '/espetaculos/galatas'
   id:
     | '__root__'
     | '/'
@@ -85,6 +96,7 @@ export interface FileRouteTypes {
     | '/documentario-10-anos'
     | '/espetaculos'
     | '/espetaculos/$slug'
+    | '/espetaculos/galatas'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -124,6 +136,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/espetaculos/galatas': {
+      id: '/espetaculos/galatas'
+      path: '/galatas'
+      fullPath: '/espetaculos/galatas'
+      preLoaderRoute: typeof EspetaculosGalatasRouteImport
+      parentRoute: typeof EspetaculosRoute
+    }
     '/espetaculos/$slug': {
       id: '/espetaculos/$slug'
       path: '/$slug'
@@ -136,10 +155,12 @@ declare module '@tanstack/react-router' {
 
 interface EspetaculosRouteChildren {
   EspetaculosSlugRoute: typeof EspetaculosSlugRoute
+  EspetaculosGalatasRoute: typeof EspetaculosGalatasRoute
 }
 
 const EspetaculosRouteChildren: EspetaculosRouteChildren = {
   EspetaculosSlugRoute: EspetaculosSlugRoute,
+  EspetaculosGalatasRoute: EspetaculosGalatasRoute,
 }
 
 const EspetaculosRouteWithChildren = EspetaculosRoute._addFileChildren(
