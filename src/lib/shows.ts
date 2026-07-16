@@ -18,6 +18,7 @@ export type Show = {
   gallery?: string[];
   faq?: { q: string; a: string }[];
   cta?: string;
+  driveUrl?: string;
 };
 
 export const SHOWS: Show[] = [
