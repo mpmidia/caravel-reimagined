@@ -1,6 +1,9 @@
+import { useMemo } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Nav } from "../components/site/Nav";
 import { Footer } from "../components/site/Footer";
+import { ShapeDivider } from "../components/site/ShapeDivider";
+import { CTAContact } from "../components/site/CTAContact";
 import { SHOWS } from "../lib/shows";
 
 export const Route = createFileRoute("/espetaculos/")({
@@ -16,26 +19,35 @@ export const Route = createFileRoute("/espetaculos/")({
 });
 
 function EspetaculosPage() {
+  const shuffled = useMemo(() => {
+    const arr = [...SHOWS];
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }, []);
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Nav />
+      <ShapeDivider />
       <main>
         <section className="container-x pt-16 pb-10 md:pt-24 md:pb-16">
           <span className="text-sm font-semibold uppercase tracking-widest text-primary">
             Nossos espetáculos
           </span>
           <h1 className="mt-4 text-5xl md:text-6xl lg:text-7xl leading-[1.02] max-w-4xl">
-            A Bíblia reencontrada <span className="italic text-primary">pela arte.</span>
+            Histórias que <span className="italic text-primary">conectam</span> pessoas.
           </h1>
           <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed">
-            Cada espetáculo é uma jornada — uma forma de tocar corações, provocar
-            reflexões e reencontrar o sagrado em cena.
+            Cada espetáculo é um convite para sentir, refletir e viver
+            histórias que conectam pessoas.
           </p>
         </section>
 
         <section className="container-x pb-24 md:pb-32">
           <div className="grid md:grid-cols-2 gap-6 md:gap-8">
-            {SHOWS.map((s, i) => (
+            {shuffled.map((s, i) => (
               <Link
                 key={s.slug}
                 to="/espetaculos/$slug"
@@ -54,8 +66,6 @@ function EspetaculosPage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 p-8 md:p-10">
                   <div className="flex items-center gap-3 text-xs uppercase tracking-widest opacity-80">
-                    {s.year && <span>{s.year}</span>}
-                    {s.year && <span className="h-px w-6 bg-cream/40" />}
                     <span>{s.subtitle}</span>
                   </div>
                   <h3 className="mt-3 font-display text-3xl md:text-4xl lg:text-5xl">
@@ -70,6 +80,8 @@ function EspetaculosPage() {
             ))}
           </div>
         </section>
+
+        <CTAContact />
       </main>
       <Footer />
     </div>
