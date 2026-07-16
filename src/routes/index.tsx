@@ -1,16 +1,25 @@
+import { useMemo } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Nav } from "../components/site/Nav";
 import { Footer } from "../components/site/Footer";
+import { ShapeDivider } from "../components/site/ShapeDivider";
+import { CTAContact } from "../components/site/CTAContact";
 import { SHOWS } from "../lib/shows";
 
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Cia Alvo — Teatro que toca. Arte que constrói." },
+      { name: "description", content: "Somos um grupo teatral que mistura emoção, reflexão e fé para redescobrir o sagrado com arte, humanidade e sensibilidade." },
+      { property: "og:title", content: "Cia Alvo — Teatro que toca. Arte que constrói." },
+      { property: "og:description", content: "Experiências teatrais que emocionam e ficam na memória." },
+    ],
+  }),
   component: Index,
 });
 
 const HERO_IMG =
   "https://ciaalvo.com.br/wp-content/uploads/2022/09/DIV-1-scaled.jpg";
-const WHATSAPP =
-  "https://api.whatsapp.com/send/?phone=5511983167188&text=Ol%C3%A1+%2ACia+Alvo%2A%21";
 
 function Hero() {
   return (
@@ -19,7 +28,7 @@ function Hero() {
         <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-16 items-center">
           <div>
             <span className="inline-flex items-center rounded-full bg-secondary px-4 py-1.5 text-xs font-semibold tracking-widest uppercase text-ink/70">
-              A Cia. Alvo
+              Em destaque
             </span>
             <h1 className="mt-6 text-5xl md:text-6xl lg:text-7xl leading-[1.02]">
               Teatro que toca.{" "}
@@ -27,9 +36,8 @@ function Hero() {
               Experiências que ficam.
             </h1>
             <p className="mt-8 text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed">
-              Somos a Cia Alvo — um grupo teatral que mistura emoção, reflexão
-              e fé para redescobrir o sagrado com arte, humanidade e
-              sensibilidade.
+              Somos um grupo teatral que mistura emoção, reflexão e fé para
+              redescobrir o sagrado com arte, humanidade e sensibilidade.
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
               <Link
@@ -62,40 +70,15 @@ function Hero() {
   );
 }
 
-function About() {
-  return (
-    <section id="sobre" className="py-24 md:py-32 bg-secondary/40">
-      <div className="container-x">
-        <div className="max-w-4xl">
-          <span className="text-sm font-semibold uppercase tracking-widest text-primary">
-            Manifesto
-          </span>
-          <h2 className="mt-4 text-4xl md:text-5xl lg:text-6xl">
-            A Bíblia reencontrada pela arte.
-          </h2>
-        </div>
-        <div className="mt-14 grid md:grid-cols-3 gap-8 md:gap-12 text-lg leading-relaxed text-ink/85">
-          <p>
-            Somos a Cia Alvo, um grupo teatral que rompe barreiras e convida
-            todo mundo a viver uma experiência que mistura emoção, reflexão e
-            fé.
-          </p>
-          <p>
-            Aqui a gente quebra rótulos, acolhe histórias e abre caminhos pra
-            quem quer enxergar o mundo com outros olhos, e sentir com o coração
-            aberto.
-          </p>
-          <p>
-            A gente mergulha nas Escrituras para redescobrir o que é sagrado —
-            com arte, humanidade e sensibilidade.
-          </p>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function Shows() {
+  const shuffled = useMemo(() => {
+    const arr = [...SHOWS];
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }, []);
   return (
     <section id="espetaculos" className="py-24 md:py-32">
       <div className="container-x">
@@ -110,12 +93,12 @@ function Shows() {
           </div>
           <p className="text-muted-foreground max-w-md text-lg">
             Teatro, música, dança e audiovisual para criar experiências únicas,
-            emocionantes e acessíveis — para todas as idades.
+            emocionantes e acessíveis para todas as idades.
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {SHOWS.map((s) => (
+          {shuffled.map((s) => (
             <Link
               key={s.slug}
               to="/espetaculos/$slug"
@@ -130,54 +113,13 @@ function Shows() {
               <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-6">
                 <span className="text-xs uppercase tracking-widest text-accent">
-                  {s.year || "Espetáculo"}
+                  {s.subtitle}
                 </span>
                 <h3 className="mt-2 font-display text-2xl md:text-3xl">{s.title}</h3>
-                <p className="mt-1 text-sm text-cream/80">{s.subtitle}</p>
+                <p className="mt-1 text-sm text-cream/80">{s.tagline}</p>
               </div>
             </Link>
           ))}
-        </div>
-
-        <blockquote className="mt-16 rounded-[2rem] bg-ink text-cream p-10 md:p-14 max-w-4xl mx-auto text-center">
-          <span className="font-display text-8xl leading-none text-accent">“</span>
-          <p className="font-display text-2xl md:text-3xl leading-snug -mt-4">
-            Lemos a Bíblia como quem ouve um eco antigo, que ainda ressoa nas
-            dores e nos sonhos do agora.
-          </p>
-        </blockquote>
-      </div>
-    </section>
-  );
-}
-
-function CTA() {
-  return (
-    <section className="py-24 md:py-32 bg-secondary/40">
-      <div className="container-x">
-        <div className="rounded-[2.5rem] bg-ink text-cream p-10 md:p-16 grid md:grid-cols-[1.4fr_1fr] gap-10 items-center">
-          <div>
-            <span className="text-xs font-semibold uppercase tracking-widest text-accent">
-              Leve a Cia Alvo para o seu palco
-            </span>
-            <h2 className="mt-4 font-display text-4xl md:text-5xl lg:text-6xl leading-tight">
-              Vamos criar juntos uma experiência inesquecível.
-            </h2>
-            <p className="mt-6 text-cream/80 text-lg max-w-lg">
-              Igrejas, teatros, escolas, festivais e eventos culturais —
-              adaptamos nossos espetáculos ao seu espaço e ao seu público.
-            </p>
-          </div>
-          <div className="flex md:justify-end">
-            <a
-              href={WHATSAPP}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center rounded-full bg-accent px-8 py-4 text-sm font-semibold text-ink hover:opacity-90 transition"
-            >
-              Falar no WhatsApp →
-            </a>
-          </div>
         </div>
       </div>
     </section>
@@ -188,11 +130,11 @@ function Index() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Nav />
+      <ShapeDivider />
       <main>
         <Hero />
-        <About />
         <Shows />
-        <CTA />
+        <CTAContact />
       </main>
       <Footer />
     </div>

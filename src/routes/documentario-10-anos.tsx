@@ -1,9 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Nav } from "../components/site/Nav";
 import { Footer } from "../components/site/Footer";
-
-const WHATSAPP =
-  "https://api.whatsapp.com/send/?phone=5511983167188&text=Ol%C3%A1+%2ACia+Alvo%2A%21";
+import { ShapeDivider } from "../components/site/ShapeDivider";
+import { CTAContact } from "../components/site/CTAContact";
 
 export const Route = createFileRoute("/documentario-10-anos")({
   head: () => ({
@@ -21,6 +20,7 @@ function DocPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Nav />
+      <ShapeDivider />
       <main>
         <section className="container-x pt-16 pb-16 md:pt-24 md:pb-24">
           <div className="max-w-4xl">
@@ -31,10 +31,9 @@ function DocPage() {
               10 anos <span className="italic text-primary">de Cia Alvo.</span>
             </h1>
             <p className="mt-8 text-lg md:text-xl text-muted-foreground leading-relaxed">
-              Uma década tecendo teatro, música, dança e audiovisual em histórias
-              que tocam corações. O documentário celebra a trajetória da Cia
-              Alvo — os bastidores, as pessoas e as cenas que construíram nosso
-              caminho.
+              Este documentário reúne os bastidores e os momentos que fizeram
+              da trajetória da Cia Alvo numa década de histórias, encontros e
+              muita arte.
             </p>
           </div>
         </section>
@@ -81,19 +80,7 @@ function DocPage() {
           </div>
         </section>
 
-        <section className="container-x py-20 md:py-28 text-center">
-          <h2 className="font-display text-3xl md:text-4xl max-w-2xl mx-auto">
-            Quer trazer a Cia Alvo para o seu palco?
-          </h2>
-          <a
-            href={WHATSAPP}
-            target="_blank"
-            rel="noreferrer"
-            className="mt-8 inline-flex items-center rounded-full bg-primary px-8 py-4 text-sm font-semibold text-primary-foreground hover:opacity-90 transition"
-          >
-            Fale com a gente
-          </a>
-        </section>
+        <CTAContact />
       </main>
       <Footer />
     </div>

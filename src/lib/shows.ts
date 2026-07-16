@@ -18,6 +18,7 @@ export type Show = {
   gallery?: string[];
   faq?: { q: string; a: string }[];
   cta?: string;
+  driveUrl?: string;
 };
 
 export const SHOWS: Show[] = [
@@ -72,6 +73,7 @@ export const SHOWS: Show[] = [
       { q: "Serve para o público infantil?", a: "É classificação livre; o humor conquista adultos e adolescentes especialmente." },
     ],
     cta: "Traga Gálatas para o seu palco",
+    driveUrl: "https://drive.google.com/drive/folders/16MceoPDENUTmTSJKY4tcyknSjhjOtt9O?usp=sharing",
   },
   {
     slug: "efeso",
@@ -124,6 +126,7 @@ export const SHOWS: Show[] = [
       { q: "Qual o tamanho do elenco?", a: "Elenco itinerante compacto — enviamos rider e mapa de luz sob demanda." },
     ],
     cta: "Contratar Éfeso",
+    driveUrl: "https://drive.google.com/drive/folders/1aBL4X94liaBthzHpb6NO2UltKNaC3aQy?usp=sharing",
   },
   {
     slug: "guardadoemsilencio",
@@ -175,6 +178,7 @@ export const SHOWS: Show[] = [
       { q: "Aborda a religião de forma direta?", a: "A espiritualidade aparece como caminho de redenção, sem discurso doutrinário." },
     ],
     cta: "Levar Guardado em Silêncio ao seu público",
+    driveUrl: "https://drive.google.com/drive/folders/1T6cKn0yk39k6RXEneleCN1CX9bdqAP5R?usp=sharing",
   },
   {
     slug: "meupequenouniverso",
@@ -225,6 +229,7 @@ export const SHOWS: Show[] = [
       { q: "Tem interação com o público?", a: "Sim, momentos de participação cuidadosamente pensados." },
     ],
     cta: "Levar Meu Pequeno Universo ao seu público",
+    driveUrl: "https://drive.google.com/drive/folders/1C7V3YYgvQYDrPcKcSPS6eCDGwsGJJ8CL?usp=drive_link",
   },
   {
     slug: "opassageiro",
@@ -281,6 +286,7 @@ export const SHOWS: Show[] = [
       { q: "Serve para eventos corporativos?", a: "Sim — o formato se adapta muito bem a convenções e encontros." },
     ],
     cta: "Receber O Passageiro no seu evento",
+    driveUrl: "https://drive.google.com/drive/folders/11kqvBjS5METocZO8lb5FVYgMbfqtO-JZ?usp=sharing",
   },
   {
     slug: "omundodegael",
@@ -333,6 +339,7 @@ export const SHOWS: Show[] = [
       { q: "Tem material pedagógico?", a: "Sim, disponibilizamos guia para educadores e responsáveis." },
     ],
     cta: "Agendar O Mundo de Gael",
+    driveUrl: "https://drive.google.com/drive/folders/1ca62kOXXVWzf9U5CwuW6oiRRbcThIMqf?usp=sharing",
   },
 ];
 
