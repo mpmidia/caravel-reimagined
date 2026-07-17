@@ -1,37 +1,36 @@
 type ShapeDividerProps = {
-  /** background color of the section above (matches the container bg) */
-  fromColor?: string;
-  /** solid color that will be drawn as the divider fill */
-  toColor?: string;
   className?: string;
   flip?: boolean;
 };
 
 /**
- * Subtle organic wave used at the top of pages, right below the Nav.
- * Renders an inline SVG so it inherits crisp scaling and works in any theme.
+ * Layered organic wave divider, placed right below the Nav on
+ * every page except /espetaculos. Two overlapping paths in accent + primary
+ * give it visual depth without stealing the show from the hero below.
  */
-export function ShapeDivider({
-  fromColor = "hsl(var(--cream) / 0.6)",
-  toColor = "var(--background)",
-  className = "",
-  flip = false,
-}: ShapeDividerProps) {
+export function ShapeDivider({ className = "", flip = false }: ShapeDividerProps) {
   return (
     <div
       aria-hidden
-      className={`relative w-full overflow-hidden leading-[0] ${className}`}
-      style={{ background: fromColor }}
+      className={`relative w-full overflow-hidden leading-[0] bg-secondary/40 ${className}`}
+      style={{ transform: flip ? "scaleY(-1)" : undefined }}
     >
       <svg
-        viewBox="0 0 1440 90"
+        viewBox="0 0 1440 120"
         preserveAspectRatio="none"
-        className="block h-[60px] w-full md:h-[90px]"
-        style={{ transform: flip ? "scaleY(-1)" : undefined }}
+        className="block h-[70px] w-full md:h-[110px]"
       >
         <path
-          d="M0,64 C240,120 480,0 720,32 C960,64 1200,96 1440,48 L1440,90 L0,90 Z"
-          fill={toColor}
+          d="M0,70 C220,120 420,20 720,50 C1000,78 1200,110 1440,60 L1440,120 L0,120 Z"
+          className="fill-accent/20"
+        />
+        <path
+          d="M0,88 C260,60 500,120 780,88 C1040,58 1240,100 1440,82 L1440,120 L0,120 Z"
+          className="fill-primary/20"
+        />
+        <path
+          d="M0,100 C220,130 500,70 780,96 C1060,120 1240,110 1440,96 L1440,120 L0,120 Z"
+          className="fill-background"
         />
       </svg>
     </div>

@@ -1,7 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Nav } from "./Nav";
 import { Footer } from "./Footer";
-import { ShapeDivider } from "./ShapeDivider";
 import { SHOWS, type Show } from "../../lib/shows";
 
 export function ShowView({ show }: { show: Show }) {
@@ -17,139 +16,171 @@ export function ShowView({ show }: { show: Show }) {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Nav />
-      <ShapeDivider />
       <main>
-        {/* HERO */}
+        {/* HERO — editorial split */}
         <section className="relative overflow-hidden bg-ink text-cream">
           <div
-            className="absolute inset-0 opacity-25"
+            className="absolute inset-0 opacity-20"
             style={{
               backgroundImage: `url(${show.image})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
-              filter: "blur(48px) saturate(1.3)",
+              filter: "blur(64px) saturate(1.4)",
             }}
             aria-hidden
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-ink/60 via-ink/85 to-ink" aria-hidden />
-          <div className="relative container-x pt-10 md:pt-14">
+          <div className="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/90 to-ink" aria-hidden />
+          <div className="relative container-x pt-8 md:pt-10">
             <Link to="/espetaculos" className="text-sm text-cream/70 hover:text-accent transition-colors">
               ← Todos os espetáculos
             </Link>
           </div>
-          <div className="relative container-x pt-10 pb-20 md:pt-14 md:pb-28">
-            <div className="grid lg:grid-cols-[1.05fr_1fr] gap-12 lg:gap-20 items-center">
+          <div className="relative container-x pt-12 pb-16 md:pt-16 md:pb-24">
+            <div className="grid lg:grid-cols-[1.1fr_1fr] gap-10 lg:gap-16 items-end">
               <div>
-                <span className="text-xs font-semibold uppercase tracking-[0.3em] text-accent">
+                <span className="inline-flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.35em] text-accent">
+                  <span className="h-px w-8 bg-accent" />
                   {show.subtitle}
                 </span>
-                <h1 className="mt-6 font-display text-6xl md:text-7xl lg:text-8xl leading-[0.9]">
+                <h1 className="mt-6 font-display text-6xl md:text-7xl lg:text-[7.5rem] leading-[0.88] tracking-tight">
                   {show.title}
                 </h1>
-                <p className="mt-8 text-xl md:text-2xl text-cream/90 max-w-xl leading-relaxed font-display italic">
-                  {show.tagline}
+                <p className="mt-8 text-xl md:text-2xl text-cream/85 max-w-xl leading-snug font-display italic">
+                  “{show.tagline}”
                 </p>
               </div>
-              <div className="relative">
-                <div className="absolute -inset-4 bg-accent/25 rounded-[2rem] rotate-2" aria-hidden />
-                <div className="absolute -inset-2 bg-primary/20 rounded-[2rem] -rotate-1" aria-hidden />
+              <div className="relative lg:pl-8">
+                <div className="absolute -inset-3 bg-accent/20 rounded-[1.75rem] rotate-1" aria-hidden />
                 <img
                   src={show.image}
                   alt={show.title}
-                  className="relative rounded-[2rem] shadow-2xl object-cover aspect-[4/5] w-full"
+                  className="relative rounded-[1.75rem] shadow-2xl object-cover aspect-[4/5] w-full ring-1 ring-cream/10"
                 />
               </div>
             </div>
           </div>
-        </section>
-
-        {/* META STRIP */}
-        <section className="border-b border-ink/10 bg-cream">
-          <div className="container-x grid grid-cols-2 md:grid-cols-4 gap-6 py-8">
-            {meta.map((m) => (
-              <div key={m.label}>
-                <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-                  {m.label}
-                </div>
-                <div className="mt-2 font-display text-xl text-ink">{m.value}</div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* SINOPSE */}
-        <section className="py-20 md:py-28">
-          <div className="container-x">
-            <div className="grid md:grid-cols-[0.4fr_1.6fr] gap-8 md:gap-16 items-start max-w-6xl">
-              <div>
-                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-                  Sinopse
-                </span>
-                <div className="mt-4 h-px w-16 bg-primary" />
-              </div>
-              <p className="text-2xl md:text-3xl leading-relaxed text-ink/90 font-display">
-                {show.intro}
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* MANIFESTO — narrativa do espetáculo */}
-        <section className="bg-secondary/40 py-20 md:py-28">
-          <div className="container-x">
-            <div className="max-w-3xl mb-14">
-              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-                Manifesto
-              </span>
-              <h2 className="mt-3 font-display text-4xl md:text-5xl text-ink leading-tight">
-                A obra por dentro.
-              </h2>
-            </div>
-            <div className="space-y-16 md:space-y-20">
-              {show.sections.map((sec, i) => (
-                <div key={i} className="grid md:grid-cols-[0.9fr_1.6fr] gap-8 md:gap-16">
-                  <div>
-                    <span className="font-display text-6xl md:text-7xl text-primary/40">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <h3 className="mt-3 font-display text-3xl md:text-4xl leading-tight text-ink">
-                      {sec.heading}
-                    </h3>
+          {/* meta rail inside hero, glass strip */}
+          <div className="relative border-t border-cream/10 bg-ink/60 backdrop-blur">
+            <div className="container-x grid grid-cols-2 md:grid-cols-4 gap-6 py-6">
+              {meta.map((m) => (
+                <div key={m.label}>
+                  <div className="text-[10px] font-semibold uppercase tracking-[0.25em] text-cream/50">
+                    {m.label}
                   </div>
-                  <div className="space-y-5 text-lg leading-relaxed text-ink/80">
-                    {sec.body.map((p, j) => (
-                      <p key={j}>{p}</p>
-                    ))}
-                  </div>
+                  <div className="mt-1.5 font-display text-lg text-cream">{m.value}</div>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* FICHA + FORMATOS + MATERIAL TÉCNICO */}
+        {/* SINOPSE — pull-quote editorial */}
         <section className="py-20 md:py-28">
-          <div className="container-x grid lg:grid-cols-2 gap-12 lg:gap-16">
+          <div className="container-x max-w-5xl">
+            <span className="text-[11px] font-semibold uppercase tracking-[0.3em] text-primary">
+              Sinopse
+            </span>
+            <p className="mt-6 font-display text-3xl md:text-[2.5rem] leading-[1.15] text-ink">
+              {show.intro}
+            </p>
+            {show.quote && (
+              <p className="mt-10 border-l-2 border-accent pl-5 italic text-lg text-ink/70 max-w-2xl">
+                {show.quote}
+              </p>
+            )}
+          </div>
+        </section>
+
+        {/* NARRATIVA — sections em cards alinhados */}
+        <section className="bg-secondary/40 py-20 md:py-28">
+          <div className="container-x">
+            <div className="flex items-end justify-between mb-14 flex-wrap gap-6">
+              <div className="max-w-2xl">
+                <span className="text-[11px] font-semibold uppercase tracking-[0.3em] text-primary">
+                  A obra por dentro
+                </span>
+                <h2 className="mt-3 font-display text-4xl md:text-5xl text-ink leading-[1.05]">
+                  Uma leitura em capítulos.
+                </h2>
+              </div>
+            </div>
+            <div className="grid md:grid-cols-2 gap-6 md:gap-8">
+              {show.sections.map((sec, i) => (
+                <article
+                  key={i}
+                  className="group rounded-3xl bg-cream/80 border border-ink/5 p-8 md:p-10 flex flex-col"
+                >
+                  <div className="flex items-baseline gap-4">
+                    <span className="font-display text-5xl text-primary/50 leading-none">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <div className="h-px flex-1 bg-ink/10" />
+                  </div>
+                  <h3 className="mt-5 font-display text-2xl md:text-3xl text-ink leading-snug">
+                    {sec.heading}
+                  </h3>
+                  <div className="mt-5 space-y-4 text-[15px] md:text-base leading-relaxed text-ink/75">
+                    {sec.body.map((p, j) => (
+                      <p key={j}>{p}</p>
+                    ))}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* HIGHLIGHTS */}
+        {show.highlights && show.highlights.length > 0 && (
+          <section className="py-20 md:py-28">
+            <div className="container-x">
+              <div className="max-w-2xl mb-12">
+                <span className="text-[11px] font-semibold uppercase tracking-[0.3em] text-primary">
+                  Por que este espetáculo
+                </span>
+                <h2 className="mt-3 font-display text-4xl md:text-5xl text-ink leading-[1.05]">
+                  Destaques da montagem.
+                </h2>
+              </div>
+              <div className="grid md:grid-cols-3 gap-5">
+                {show.highlights.map((h, i) => (
+                  <div
+                    key={i}
+                    className="rounded-2xl border border-ink/10 p-7 bg-background hover:border-primary/40 transition"
+                  >
+                    <div className="font-display text-3xl text-primary">{String(i + 1).padStart(2, "0")}</div>
+                    <h3 className="mt-4 font-display text-xl text-ink">{h.title}</h3>
+                    <p className="mt-2 text-ink/70 leading-relaxed text-[15px]">{h.text}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* FICHA + FORMATOS — refined */}
+        <section className="py-20 md:py-28 bg-ink text-cream">
+          <div className="container-x grid lg:grid-cols-[1fr_1.1fr] gap-14 lg:gap-20">
             {(show.credits || show.audience || show.genre) && (
-              <div className="rounded-3xl bg-ink text-cream p-10 md:p-12">
-                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Ficha técnica</span>
-                <h2 className="mt-3 font-display text-4xl">Sobre a montagem</h2>
-                <dl className="mt-10 space-y-5">
+              <div>
+                <span className="text-[11px] font-semibold uppercase tracking-[0.3em] text-accent">Ficha técnica</span>
+                <h2 className="mt-3 font-display text-4xl md:text-5xl leading-[1.05]">Sobre a montagem.</h2>
+                <dl className="mt-10 divide-y divide-cream/10 border-y border-cream/10">
                   {show.genre && (
-                    <div className="flex gap-6 border-b border-cream/10 pb-4">
-                      <dt className="w-40 shrink-0 text-cream/60 text-sm uppercase tracking-widest">Gênero</dt>
+                    <div className="flex gap-6 py-4">
+                      <dt className="w-40 shrink-0 text-cream/50 text-xs uppercase tracking-[0.2em] pt-0.5">Gênero</dt>
                       <dd className="text-cream">{show.genre}</dd>
                     </div>
                   )}
                   {show.audience && (
-                    <div className="flex gap-6 border-b border-cream/10 pb-4">
-                      <dt className="w-40 shrink-0 text-cream/60 text-sm uppercase tracking-widest">Público</dt>
+                    <div className="flex gap-6 py-4">
+                      <dt className="w-40 shrink-0 text-cream/50 text-xs uppercase tracking-[0.2em] pt-0.5">Público</dt>
                       <dd className="text-cream">{show.audience}</dd>
                     </div>
                   )}
                   {show.credits?.map((c) => (
-                    <div key={c.role} className="flex gap-6 border-b border-cream/10 pb-4 last:border-0">
-                      <dt className="w-40 shrink-0 text-cream/60 text-sm uppercase tracking-widest">{c.role}</dt>
+                    <div key={c.role} className="flex gap-6 py-4">
+                      <dt className="w-40 shrink-0 text-cream/50 text-xs uppercase tracking-[0.2em] pt-0.5">{c.role}</dt>
                       <dd className="text-cream">{c.name}</dd>
                     </div>
                   ))}
@@ -159,19 +190,19 @@ export function ShowView({ show }: { show: Show }) {
             <div>
               {show.formats && show.formats.length > 0 && (
                 <>
-                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">Formatos</span>
-                  <h2 className="mt-3 font-display text-4xl text-ink">Como levar até você</h2>
-                  <p className="mt-4 text-ink/70">
+                  <span className="text-[11px] font-semibold uppercase tracking-[0.3em] text-accent">Formatos</span>
+                  <h2 className="mt-3 font-display text-4xl md:text-5xl leading-[1.05]">Como levar até você.</h2>
+                  <p className="mt-4 text-cream/70 max-w-md">
                     Adaptamos a montagem ao seu espaço, evento e público.
                   </p>
-                  <div className="mt-8 space-y-4">
+                  <div className="mt-8 grid sm:grid-cols-2 gap-4">
                     {show.formats.map((f) => (
-                      <div key={f.label} className="rounded-2xl border border-ink/10 bg-cream/70 p-6">
+                      <div key={f.label} className="rounded-2xl bg-cream/5 border border-cream/10 p-6">
                         <div className="flex items-center gap-3">
-                          <span className="h-2 w-2 rounded-full bg-accent" />
-                          <h3 className="font-display text-xl text-ink">{f.label}</h3>
+                          <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+                          <h3 className="font-display text-lg text-cream">{f.label}</h3>
                         </div>
-                        <p className="mt-2 text-ink/70 leading-relaxed">{f.description}</p>
+                        <p className="mt-2 text-cream/70 leading-relaxed text-sm">{f.description}</p>
                       </div>
                     ))}
                   </div>
@@ -182,9 +213,8 @@ export function ShowView({ show }: { show: Show }) {
                   href={show.driveUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="mt-8 inline-flex items-center gap-3 rounded-full bg-primary px-7 py-4 text-sm font-semibold text-primary-foreground hover:opacity-90 transition"
+                  className="mt-10 inline-flex items-center gap-3 rounded-full bg-accent px-7 py-4 text-sm font-semibold text-ink hover:opacity-90 transition"
                 >
-                  <span aria-hidden>📁</span>
                   Material Técnico
                   <span aria-hidden>→</span>
                 </a>
@@ -192,6 +222,27 @@ export function ShowView({ show }: { show: Show }) {
             </div>
           </div>
         </section>
+
+        {/* FAQ */}
+        {show.faq && show.faq.length > 0 && (
+          <section className="py-20 md:py-28">
+            <div className="container-x max-w-4xl">
+              <span className="text-[11px] font-semibold uppercase tracking-[0.3em] text-primary">Perguntas frequentes</span>
+              <h2 className="mt-3 font-display text-4xl md:text-5xl text-ink leading-[1.05]">Dúvidas rápidas.</h2>
+              <div className="mt-10 divide-y divide-ink/10 border-y border-ink/10">
+                {show.faq.map((f, i) => (
+                  <details key={i} className="group py-5">
+                    <summary className="flex items-center justify-between cursor-pointer list-none font-display text-lg md:text-xl text-ink">
+                      {f.q}
+                      <span aria-hidden className="text-primary group-open:rotate-45 transition">+</span>
+                    </summary>
+                    <p className="mt-3 text-ink/75 leading-relaxed">{f.a}</p>
+                  </details>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* OUTROS */}
         <section className="container-x py-20 md:py-28 border-t border-ink/10">
