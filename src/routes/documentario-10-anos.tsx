@@ -63,23 +63,6 @@ function DocPage() {
           </div>
         </section>
 
-        <section className="bg-secondary/40 py-20 md:py-28">
-          <div className="container-x grid md:grid-cols-3 gap-10 text-lg text-ink/85 leading-relaxed">
-            <div>
-              <div className="font-display text-5xl text-primary">+20</div>
-              <p className="mt-3">Anos de experiência acumulados pela direção da Cia.</p>
-            </div>
-            <div>
-              <div className="font-display text-5xl text-primary">6</div>
-              <p className="mt-3">Espetáculos originais, montados e apresentados por todo o país.</p>
-            </div>
-            <div>
-              <div className="font-display text-5xl text-primary">∞</div>
-              <p className="mt-3">Encontros, histórias e vidas transformadas pela arte.</p>
-            </div>
-          </div>
-        </section>
-
         <CTAContact />
       </main>
       <Footer />

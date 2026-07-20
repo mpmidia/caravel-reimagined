@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Nav } from "../components/site/Nav";
 import { Footer } from "../components/site/Footer";
+import { ShapeDivider } from "../components/site/ShapeDivider";
 import { CTAContact } from "../components/site/CTAContact";
 import { SHOWS } from "../lib/shows";
 
@@ -29,6 +30,7 @@ function EspetaculosPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Nav />
+      <ShapeDivider />
       <main>
         <section className="container-x pt-16 pb-10 md:pt-24 md:pb-16">
           <span className="text-sm font-semibold uppercase tracking-widest text-primary">
@@ -56,7 +58,7 @@ function EspetaculosPage() {
               >
                 <div className="aspect-[16/9] md:aspect-[21/10] overflow-hidden">
                   <img
-                    src={s.image}
+                    src={s.gallery[0]}
                     alt={s.title}
                     className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
                   />
