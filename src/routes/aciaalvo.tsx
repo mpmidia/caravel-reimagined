@@ -62,47 +62,38 @@ function ACiaAlvoPage() {
         </section>
 
         <section className="py-24 md:py-32 bg-secondary/40">
-          <div className="container-x">
-            <div className="max-w-3xl">
-              <span className="text-sm font-semibold uppercase tracking-widest text-primary">
-                Manifesto
-              </span>
-              <h2 className="mt-4 font-display text-4xl md:text-5xl lg:text-6xl leading-tight">
-                Acreditamos que o teatro existe para aproximar pessoas.
-              </h2>
-            </div>
-            <div className="mt-14 grid md:grid-cols-2 gap-8 md:gap-14 text-lg leading-relaxed text-ink/85">
-              <div className="space-y-6">
-                <p>
-                  A Cia Alvo nasce do encontro entre arte, sensibilidade e
-                  humanidade. Criamos espetáculos que emocionam, provocam
-                  reflexões e convidam o público a enxergar a vida por novas
-                  perspectivas.
-                </p>
-                <p>
-                  Unimos teatro, música, dança e audiovisual para transformar
-                  histórias em experiências vivas, capazes de despertar
-                  sentimentos, memórias e diálogos que continuam muito além do
-                  palco.
-                </p>
-              </div>
-              <div className="space-y-6">
-                <p>
-                  Acreditamos em uma arte que acolhe, forma e transforma. Por
-                  isso, nossos projetos unem criação artística, educação e
-                  impacto social, ampliando o acesso à cultura e fortalecendo
-                  encontros entre pessoas e comunidades.
-                </p>
-                <p>
-                  Entre o clássico e o contemporâneo, construímos narrativas
-                  sobre liberdade, pertencimento, esperança e transformação,
-                  fazendo da arte um espaço de conexão e descoberta.
-                </p>
-                <p className="font-display italic text-2xl text-ink">
-                  Porque, no fim, mais do que contar histórias, criamos
-                  experiências que permanecem na memória e no coração.
-                </p>
-              </div>
+          <div className="container-x max-w-4xl">
+            <span className="text-sm font-semibold uppercase tracking-widest text-primary">
+              Manifesto
+            </span>
+            <h2 className="mt-4 font-display text-4xl md:text-5xl lg:text-6xl leading-tight">
+              Acreditamos que o teatro existe para aproximar pessoas.
+            </h2>
+            <div className="mt-12 space-y-6 text-lg md:text-xl leading-relaxed text-ink/85">
+              <p>
+                A Cia Alvo nasce do encontro entre arte, sensibilidade e
+                humanidade. Criamos espetáculos que emocionam, provocam
+                reflexões e convidam o público a enxergar a vida por novas
+                perspectivas.
+              </p>
+              <p>
+                Unimos teatro, música, dança e audiovisual para transformar
+                histórias em experiências vivas, capazes de despertar
+                sentimentos, memórias e diálogos que continuam muito além do
+                palco. Acreditamos em uma arte que acolhe, forma e transforma —
+                por isso, nossos projetos unem criação artística, educação e
+                impacto social, ampliando o acesso à cultura e fortalecendo
+                encontros entre pessoas e comunidades.
+              </p>
+              <p>
+                Entre o clássico e o contemporâneo, construímos narrativas
+                sobre liberdade, pertencimento, esperança e transformação,
+                fazendo da arte um espaço de conexão e descoberta.
+              </p>
+              <p className="font-display italic text-2xl md:text-3xl text-ink pt-4 border-l-4 border-primary pl-6">
+                Porque, no fim, mais do que contar histórias, criamos
+                experiências que permanecem na memória e no coração.
+              </p>
             </div>
           </div>
         </section>
