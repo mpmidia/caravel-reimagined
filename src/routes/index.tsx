@@ -60,7 +60,8 @@ function Hero() {
             <img
               src={HERO_IMG}
               alt="Cena da Cia Alvo"
-              className="relative rounded-[2rem] shadow-2xl object-cover object-top aspect-[4/5] w-full"
+              className="relative rounded-[2rem] shadow-2xl object-cover aspect-[4/5] w-full"
+              style={{ objectPosition: "50% 30%" }}
               loading="eager"
             />
           </div>
