@@ -5,6 +5,7 @@ import { Footer } from "../components/site/Footer";
 import { ShapeDivider } from "../components/site/ShapeDivider";
 import { CTAContact } from "../components/site/CTAContact";
 import { SHOWS } from "../lib/shows";
+import heroImg from "../assets/home-hero.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -18,8 +19,7 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const HERO_IMG =
-  "https://ciaalvo.com.br/wp-content/uploads/2022/09/DIV-1-scaled.jpg";
+const HERO_IMG = heroImg.url;
 
 function Hero() {
   return (
@@ -61,7 +61,7 @@ function Hero() {
               src={HERO_IMG}
               alt="Cena da Cia Alvo"
               className="relative rounded-[2rem] shadow-2xl object-cover aspect-[4/5] w-full"
-              style={{ objectPosition: "50% 30%" }}
+              style={{ objectPosition: "50% 50%" }}
               loading="eager"
             />
           </div>
