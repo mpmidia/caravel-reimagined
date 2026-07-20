@@ -1,10 +1,9 @@
 import { Link } from "@tanstack/react-router";
+import logoAsset from "../../assets/alvo-logo-color.png.asset.json";
 
-const LOGO_IMG =
-  "https://ciaalvo.com.br/wp-content/uploads/2023/07/ALVO_LOGO_TRANS_1024-1024x1024.png";
 const WHATSAPP_SALES =
   "https://api.whatsapp.com/send/?phone=551139989494&text=Ol%C3%A1+%2ACia+Alvo%2A%21";
-const CARAVANAS_URL = "https://caravana.ciaalvo.com.br";
+const CARAVANAS_URL = "https://caravana-refreshed.lovable.app";
 
 export function Nav() {
   return (
@@ -12,9 +11,9 @@ export function Nav() {
       <div className="container-x flex items-center justify-between py-3">
         <Link to="/" className="flex items-center" aria-label="Cia Alvo">
           <img
-            src={LOGO_IMG}
+            src={logoAsset.url}
             alt="Cia Alvo"
-            className="h-14 md:h-16 w-auto object-contain"
+            className="h-12 md:h-14 w-auto object-contain"
           />
         </Link>
         <nav className="hidden md:flex items-center gap-8 text-sm font-medium">

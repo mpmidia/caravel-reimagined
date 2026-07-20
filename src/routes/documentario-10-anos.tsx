@@ -39,27 +39,24 @@ function DocPage() {
         </section>
 
         <section className="container-x pb-24 md:pb-32">
-          <div className="relative rounded-[2rem] overflow-hidden bg-ink aspect-video">
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-center text-cream">
-                <div className="w-20 h-20 mx-auto rounded-full bg-accent/90 flex items-center justify-center">
-                  <span className="text-ink text-3xl">▶</span>
-                </div>
-                <p className="mt-6 font-display text-2xl">Em breve</p>
-                <p className="mt-2 text-cream/70 text-sm max-w-sm mx-auto">
-                  Fique de olho no nosso canal para o lançamento oficial do
-                  documentário.
-                </p>
-                <a
-                  href="https://www.youtube.com/@CiaAlvoOficial"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-6 inline-flex items-center rounded-full bg-cream text-ink px-6 py-3 text-sm font-semibold hover:bg-accent transition"
-                >
-                  Acompanhar no YouTube
-                </a>
-              </div>
-            </div>
+          <div className="relative rounded-[2rem] overflow-hidden bg-ink aspect-video shadow-2xl">
+            <iframe
+              className="absolute inset-0 h-full w-full"
+              src="https://www.youtube.com/embed/nbDEGq5msHM"
+              title="Documentário 10 Anos — Cia Alvo"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            />
+          </div>
+          <div className="mt-6 text-center">
+            <a
+              href="https://youtu.be/nbDEGq5msHM"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:opacity-80 transition"
+            >
+              Assistir no YouTube <span aria-hidden>→</span>
+            </a>
           </div>
         </section>
 
