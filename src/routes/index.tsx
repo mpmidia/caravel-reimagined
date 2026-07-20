@@ -106,7 +106,7 @@ function Shows() {
               className="group relative overflow-hidden rounded-2xl bg-ink text-cream aspect-[4/5]"
             >
               <img
-                src={s.image}
+                src={s.gallery[0]}
                 alt={s.title}
                 className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
               />
